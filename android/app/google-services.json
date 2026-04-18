@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "920561796635",
+    "project_id": "venture-point",
+    "storage_bucket": "venture-point.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920561796635:android:9c2f68e5d18dc893105abe",
+        "android_client_info": {
+          "package_name": "com.venturepoint.venturepoint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASfmb3tzFvvqvWw7yEl2vaTciEMvK_dvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
