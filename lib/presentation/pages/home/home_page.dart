@@ -6,7 +6,7 @@ import '../../widgets/quick_action_buttons.dart';
 import '../flight/flight_search_page.dart';
 import '../hotel/hotel_search_page.dart';
 import '../profile/profile_page.dart';
-import '../trips/trips_page.dart';
+import '../trips/discover_page.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/home';
@@ -52,10 +52,10 @@ class HomePage extends StatelessWidget {
                     QuickActionButtons(
                       buttons: [
                         QuickActionButton(
-                          label: 'Trips',
-                          icon: Icons.card_travel,
+                          label: 'Discover',
+                          icon: Icons.explore,
                           onPressed: () {
-                            Navigator.of(context).pushNamed(TripsPage.routeName);
+                            Navigator.of(context).pushNamed(DiscoverPage.routeName);
                           },
                         ),
                         QuickActionButton(

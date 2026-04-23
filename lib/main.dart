@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'core/theme/app_theme.dart';
 import 'presentation/pages/onboarding_page.dart';
@@ -7,6 +6,7 @@ import 'presentation/pages/splash_page.dart';
 import 'presentation/pages/main_navigation_page.dart';
 import 'presentation/pages/home/home_page.dart';
 import 'presentation/pages/saved/saved_items_page.dart';
+import 'presentation/pages/trips/discover_page.dart';
 import 'presentation/pages/trips/trips_page.dart';
 import 'presentation/pages/profile/profile_page.dart';
 import 'presentation/pages/flight/flight_search_page.dart';
@@ -37,6 +37,7 @@ class VenturePointApp extends StatelessWidget {
         MainNavigationPage.routeName: (_) => const MainNavigationPage(),
         HomePage.routeName: (_) => const HomePage(),
         SavedItemsPage.routeName: (_) => const SavedItemsPage(),
+        DiscoverPage.routeName: (_) => const DiscoverPage(),
         TripsPage.routeName: (_) => const TripsPage(),
         ProfilePage.routeName: (_) => const ProfilePage(),
         FlightSearchPage.routeName: (_) => const FlightSearchPage(),

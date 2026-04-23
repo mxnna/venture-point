@@ -57,5 +57,6 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "java.configuration.updateBuildConfiguration": "interactive",
-  "dart.showTodos": false
+  "dart.showTodos": false,
+  "cmake.sourceDirectory": "C:/mxnna/coding/flutter/venturepoint/windows"
 }
