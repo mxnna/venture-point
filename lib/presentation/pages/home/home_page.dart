@@ -47,16 +47,6 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 48),
-                // Quick Action Buttons Section
-                const Text(
-                  'Quick Actions',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF2E2B28),
-                  ),
-                ),
-                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -85,32 +75,6 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                   ],
-                ),
-                const SizedBox(height: 60),
-                // Welcome Section
-                Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        'Welcome to Venture Point!',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFF2E2B28),
-                          fontFamily: 'TT Milks Casual Pie Base',
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      const Text(
-                        'Explore destinations, book flights\nand hotels all in one place.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF2E2B28),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
               ],
             ),
