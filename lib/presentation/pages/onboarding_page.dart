@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'main_navigation_page.dart';
+
 class OnboardingPage extends StatelessWidget {
   static const routeName = '/onboarding';
 
@@ -34,7 +36,9 @@ class OnboardingPage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed(MainNavigationPage.routeName);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFEA8A7E),
                   foregroundColor: const Color(0xFFF6F5F1),
