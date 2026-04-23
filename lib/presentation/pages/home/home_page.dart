@@ -14,89 +14,106 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F5F1),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Logo and Title
-              Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                      width: 60,
-                      height: 60,
-                      fit: BoxFit.cover,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Logo and Title
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        'assets/images/logo.png',
+                        width: 56,
+                        height: 56,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 16),
-                  const Text(
-                    'Venture Point',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2E2B28),
+                    const SizedBox(width: 12),
+                    const Expanded(
+                      child: Text(
+                        'Venture Point',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF2E2B28),
+                          fontFamily: 'TT Milks Casual Pie Base',
+                        ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
-              // Quick Action Buttons
-              const Text(
-                'Quick Actions',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF2E2B28),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildQuickActionButton(
-                    context,
-                    'Discover',
-                    Icons.explore,
-                    () {
-                      Navigator.of(context).pushNamed(CityDetailsPage.routeName);
-                    },
-                  ),
-                  _buildQuickActionButton(
-                    context,
-                    'Flights',
-                    Icons.flight,
-                    () {
-                      Navigator.of(context).pushNamed(FlightSearchPage.routeName);
-                    },
-                  ),
-                  _buildQuickActionButton(
-                    context,
-                    'Hotels',
-                    Icons.hotel,
-                    () {
-                      Navigator.of(context).pushNamed(HotelSearchPage.routeName);
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
-              // Placeholder for more content
-              const Expanded(
-                child: Center(
-                  child: Text(
-                    'Welcome to Venture Point!\nExplore destinations, book flights and hotels.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xFF2E2B28),
-                    ),
+                const SizedBox(height: 48),
+                // Quick Action Buttons Section
+                const Text(
+                  'Quick Actions',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xFF2E2B28),
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildQuickActionButton(
+                      context,
+                      'Discover',
+                      Icons.explore,
+                      () {
+                        Navigator.of(context).pushNamed(CityDetailsPage.routeName);
+                      },
+                    ),
+                    _buildQuickActionButton(
+                      context,
+                      'Flights',
+                      Icons.flight,
+                      () {
+                        Navigator.of(context).pushNamed(FlightSearchPage.routeName);
+                      },
+                    ),
+                    _buildQuickActionButton(
+                      context,
+                      'Hotels',
+                      Icons.hotel,
+                      () {
+                        Navigator.of(context).pushNamed(HotelSearchPage.routeName);
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 60),
+                // Welcome Section
+                Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Welcome to Venture Point!',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFF2E2B28),
+                          fontFamily: 'TT Milks Casual Pie Base',
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      const Text(
+                        'Explore destinations, book flights\nand hotels all in one place.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF2E2B28),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -109,28 +126,43 @@ class HomePage extends StatelessWidget {
     IconData icon,
     VoidCallback onPressed,
   ) {
-    return Column(
-      children: [
-        ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            shape: const CircleBorder(),
-            padding: const EdgeInsets.all(20),
-            backgroundColor: const Color(0xFFEA8A7E),
-            foregroundColor: const Color(0xFFF6F5F1),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Column(
+        children: [
+          Container(
+            width: 76,
+            height: 76,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: const Color(0xFFEA8A7E),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFFEA8A7E).withOpacity(0.3),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Center(
+              child: Icon(
+                icon,
+                size: 32,
+                color: const Color(0xFFF6F5F1),
+              ),
+            ),
           ),
-          child: Icon(icon, size: 32),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: Color(0xFF2E2B28),
+          const SizedBox(height: 12),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+              color: Color(0xFF2E2B28),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
