@@ -9,12 +9,8 @@ class FlightSearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F5F1),
-      appBar: AppBar(
-        title: const Text('Flight Search'),
-      ),
-      body: const Center(
-        child: Text('Flight Search Page'),
-      ),
+      appBar: AppBar(title: const Text('Flights')),
+      body: const Center(child: Text('Flight Search Page')),
     );
   }
 }

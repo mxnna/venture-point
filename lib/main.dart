@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import 'core/theme/app_theme.dart';
 import 'presentation/pages/onboarding_page.dart';
 import 'presentation/pages/splash_page.dart';
 import 'presentation/pages/main_navigation_page.dart';
@@ -25,32 +27,7 @@ class VenturePointApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'VenturePoint',
-      theme: ThemeData(
-        colorScheme: const ColorScheme.light(
-          primary: Color(0xFFEA8A7E),
-          onPrimary: Color(0xFFF6F5F1),
-          surface: Color(0xFFF6F5F1),
-          onSurface: Color(0xFF2E2B28),
-        ),
-        scaffoldBackgroundColor: const Color(0xFFF6F5F1),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFEA8A7E),
-          foregroundColor: Color(0xFFF6F5F1),
-          elevation: 0,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFEA8A7E),
-            foregroundColor: const Color(0xFFF6F5F1),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            minimumSize: const Size.fromHeight(56),
-          ),
-        ),
-        fontFamily: 'TT Milks Casual Pie Base',
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       home: const SplashPage(),
       routes: {
         OnboardingPage.routeName: (_) {

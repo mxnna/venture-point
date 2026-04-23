@@ -9,12 +9,8 @@ class HotelSearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F5F1),
-      appBar: AppBar(
-        title: const Text('Hotel Search'),
-      ),
-      body: const Center(
-        child: Text('Hotel Search Page'),
-      ),
+      appBar: AppBar(title: const Text('Hotels')),
+      body: const Center(child: Text('Hotel Search Page')),
     );
   }
 }
