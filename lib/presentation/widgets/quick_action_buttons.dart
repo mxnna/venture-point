@@ -24,28 +24,37 @@ class QuickActionButtons extends StatelessWidget {
     super.key,
     required this.buttons,
     this.buttonColor = const Color(0xFFEA8A7E),
-    this.iconColor = const Color(0xFFF6F5F1),
+    this.iconColor = const Color(0xFFFFFFFF),
     this.textColor = const Color(0xFF2E2B28),
-    this.buttonSize = 72,
-    this.iconSize = 28,
+    this.buttonSize = 56,
+    this.iconSize = 24,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: buttons
-          .map((button) => _buildButton(context, button))
-          .toList(),
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: buttons.map((button) => _buildButton(button)).toList(),
     );
   }
 
-  Widget _buildButton(BuildContext context, QuickActionButton button) {
+  Widget _buildButton(QuickActionButton button) {
     return GestureDetector(
       onTap: button.onPressed,
-      child: SizedBox(
-        width: 86,
+      child: Container(
+        width: 110,
+        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(28),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 16,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -57,7 +66,7 @@ class QuickActionButtons extends StatelessWidget {
                 color: buttonColor,
                 boxShadow: [
                   BoxShadow(
-                    color: buttonColor.withOpacity(0.18),
+                    color: buttonColor.withOpacity(0.2),
                     blurRadius: 12,
                     offset: const Offset(0, 6),
                   ),
@@ -71,14 +80,14 @@ class QuickActionButtons extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 14),
             Text(
-              button.label.toUpperCase(),
+              button.label,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.2,
+                fontSize: 14,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 0.5,
                 color: textColor,
               ),
             ),

@@ -47,7 +47,7 @@ class AppHeader extends StatelessWidget {
               shape: BoxShape.circle,
               color: Colors.transparent,
             ),
-            child: Icon(
+            child: const Icon(
               Icons.notifications_outlined,
               color: Color(0xFF2E2B28),
               size: 24,
