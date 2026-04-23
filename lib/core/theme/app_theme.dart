@@ -22,12 +22,13 @@ class AppTheme {
       
       // App Bar Theme
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.textLight,
+        backgroundColor: Colors.transparent,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
-        centerTitle: true,
+        centerTitle: false,
+        iconTheme: const IconThemeData(color: AppColors.textPrimary),
         titleTextStyle: AppTextStyles.headingLarge.copyWith(
-          color: AppColors.textLight,
+          color: AppColors.textPrimary,
         ),
       ),
 
