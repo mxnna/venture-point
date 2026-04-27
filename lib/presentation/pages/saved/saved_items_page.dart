@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 class SavedItemsPage extends StatelessWidget {
   static const routeName = '/saved';
@@ -8,13 +9,9 @@ class SavedItemsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F5F1),
-      appBar: AppBar(
-        title: const Text('Saved Items'),
-      ),
-      body: const Center(
-        child: Text('Saved Items Page'),
-      ),
+      backgroundColor: AppColors.secondary,
+      appBar: AppBar(title: const Text('Saved Items')),
+      body: const Center(child: Text('Saved Items Page')),
     );
   }
 }

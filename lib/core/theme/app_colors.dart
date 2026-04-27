@@ -13,6 +13,7 @@ class AppColors {
   // Text Colors
   static const Color textPrimary = Color(0xFF2E2B28); // Dark Brown
   static const Color textSecondary = Color(0xFF9C9996); // Light Brown/Gray
+  static const Color textMuted = Color(0xFF7B8B87); // Muted Gray
   static const Color textLight = Color(0xFFF6F5F1); // Light Background
 
   // Functional Colors
@@ -33,4 +34,3 @@ class AppColors {
   static Color textWithOpacity(double opacity) =>
       textPrimary.withOpacity(opacity);
 }
-

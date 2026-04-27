@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 import 'main_navigation_page.dart';
 
@@ -10,7 +11,7 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F5F1),
+      backgroundColor: AppColors.secondary,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
@@ -28,7 +29,7 @@ class OnboardingPage extends StatelessWidget {
                       return const Icon(
                         Icons.flight_takeoff,
                         size: 108,
-                        color: Color(0xFFEA8A7E),
+                        color: AppColors.primary,
                       );
                     },
                   ),
@@ -37,11 +38,13 @@ class OnboardingPage extends StatelessWidget {
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacementNamed(MainNavigationPage.routeName);
+                  Navigator.of(
+                    context,
+                  ).pushReplacementNamed(MainNavigationPage.routeName);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFEA8A7E),
-                  foregroundColor: const Color(0xFFF6F5F1),
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: AppColors.secondary,
                   padding: const EdgeInsets.symmetric(vertical: 18),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),

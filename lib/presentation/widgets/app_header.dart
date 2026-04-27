@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 class AppHeader extends StatelessWidget {
   final String logoPath;
@@ -34,7 +35,7 @@ class AppHeader extends StatelessWidget {
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Color(0xFFEA8A7E),
+              color: AppColors.primary,
             ),
           ),
         ),
@@ -49,7 +50,7 @@ class AppHeader extends StatelessWidget {
             ),
             child: const Icon(
               Icons.notifications_outlined,
-              color: Color(0xFF2E2B28),
+              color: AppColors.textPrimary,
               size: 24,
             ),
           ),
@@ -63,13 +64,9 @@ class AppHeader extends StatelessWidget {
               height: 40,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xFFEA8A7E),
+                color: AppColors.primary,
               ),
-              child: Icon(
-                Icons.person,
-                color: Color(0xFFF6F5F1),
-                size: 20,
-              ),
+              child: Icon(Icons.person, color: AppColors.secondary, size: 20),
             ),
           ),
         ],

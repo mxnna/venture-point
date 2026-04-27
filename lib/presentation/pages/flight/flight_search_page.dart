@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 class FlightSearchPage extends StatelessWidget {
   static const routeName = '/flights';
@@ -8,7 +9,7 @@ class FlightSearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F5F1),
+      backgroundColor: AppColors.secondary,
       appBar: AppBar(title: const Text('Flights')),
       body: const Center(child: Text('Flight Search Page')),
     );

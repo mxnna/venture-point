@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 class QuickActionButton {
   final String label;
@@ -23,9 +24,9 @@ class QuickActionButtons extends StatelessWidget {
   const QuickActionButtons({
     super.key,
     required this.buttons,
-    this.buttonColor = const Color(0xFFEA8A7E),
-    this.iconColor = const Color(0xFFFFFFFF),
-    this.textColor = const Color(0xFF2E2B28),
+    this.buttonColor = AppColors.primary,
+    this.iconColor = AppColors.white,
+    this.textColor = AppColors.textPrimary,
     this.buttonSize = 56,
     this.iconSize = 24,
   });
@@ -73,11 +74,7 @@ class QuickActionButtons extends StatelessWidget {
                 ],
               ),
               child: Center(
-                child: Icon(
-                  button.icon,
-                  size: iconSize,
-                  color: iconColor,
-                ),
+                child: Icon(button.icon, size: iconSize, color: iconColor),
               ),
             ),
             const SizedBox(height: 14),
@@ -97,4 +94,3 @@ class QuickActionButtons extends StatelessWidget {
     );
   }
 }
-

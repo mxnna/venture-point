@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 class DiscoverPage extends StatelessWidget {
   static const routeName = '/discover';
@@ -8,13 +9,9 @@ class DiscoverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F5F1),
-      appBar: AppBar(
-        title: const Text('Discover'),
-      ),
-      body: const Center(
-        child: Text('Discover Page'),
-      ),
+      backgroundColor: AppColors.secondary,
+      appBar: AppBar(title: const Text('Discover')),
+      body: const Center(child: Text('Discover Page')),
     );
   }
 }

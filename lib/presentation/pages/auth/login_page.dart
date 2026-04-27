@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
   static const routeName = '/login';
@@ -8,10 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Sign In'), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
         child: Column(
@@ -23,16 +21,13 @@ class LoginPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF2E2B28),
+                color: AppColors.textPrimary,
               ),
             ),
             const SizedBox(height: 12),
             const Text(
               'Sign in to continue planning your next adventure.',
-              style: TextStyle(
-                fontSize: 16,
-                color: Color(0xFF7B8B87),
-              ),
+              style: TextStyle(fontSize: 16, color: AppColors.textMuted),
             ),
             const SizedBox(height: 40),
             const TextField(

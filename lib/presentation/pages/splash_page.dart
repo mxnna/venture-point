@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 import 'onboarding_page.dart';
 
@@ -28,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F5F1),
+      backgroundColor: AppColors.secondary,
       body: Center(
         child: Image.asset(
           'assets/images/venture_point_logo.png',
@@ -39,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
             return const Icon(
               Icons.flight_takeoff,
               size: 120,
-              color: Color(0xFFEA8A7E),
+              color: AppColors.primary,
             );
           },
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 import 'home/home_page.dart';
 import 'saved/saved_items_page.dart';
@@ -45,9 +46,9 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xFFEA8A7E),
-        unselectedItemColor: const Color(0xFF2E2B28).withOpacity(0.6),
-        backgroundColor: const Color(0xFFF6F5F1),
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.textPrimary.withOpacity(0.6),
+        backgroundColor: AppColors.secondary,
         onTap: _onItemTapped,
       ),
     );
