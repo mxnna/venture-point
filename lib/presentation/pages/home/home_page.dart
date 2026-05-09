@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 import '../../widgets/app_header.dart';
 import '../../widgets/search_bar.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F5F1),
+      backgroundColor: AppColors.secondary,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 24.0),
@@ -44,9 +45,9 @@ class HomePage extends StatelessWidget {
                       onFilterTap: () {
                         // Handle filter tap
                       },
-                      backgroundColor: Colors.white,
-                      textColor: const Color(0xFF2E2B28),
-                      hintColor: const Color(0xFF9C9996),
+                      backgroundColor: AppColors.white,
+                      textColor: AppColors.textPrimary,
+                      hintColor: AppColors.textSecondary,
                     ),
                     const SizedBox(height: 28),
                     QuickActionButtons(
@@ -55,23 +56,27 @@ class HomePage extends StatelessWidget {
                           label: 'Discover',
                           icon: Icons.explore,
                           onPressed: () {
-                            Navigator.of(context).pushNamed(DiscoverPage.routeName);
+                            Navigator.of(
+                              context,
+                            ).pushNamed(DiscoverPage.routeName);
                           },
                         ),
                         QuickActionButton(
                           label: 'Hotels',
-                          icon: Icons.hotel,
+                          icon: Icons.apartment,
                           onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(HotelSearchPage.routeName);
+                            Navigator.of(
+                              context,
+                            ).pushNamed(HotelSearchPage.routeName);
                           },
                         ),
                         QuickActionButton(
                           label: 'Flights',
                           icon: Icons.flight,
                           onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(FlightSearchPage.routeName);
+                            Navigator.of(
+                              context,
+                            ).pushNamed(FlightSearchPage.routeName);
                           },
                         ),
                       ],

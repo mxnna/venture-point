@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venturepoint/core/theme/app_colors.dart';
 
 class SearchBarWidget extends StatefulWidget {
   final String hintText;
@@ -15,9 +16,9 @@ class SearchBarWidget extends StatefulWidget {
     this.controller,
     this.onChanged,
     this.onFilterTap,
-    this.backgroundColor = const Color(0xFFF6F5F1),
-    this.textColor = const Color(0xFF2E2B28),
-    this.hintColor = const Color(0xFF9C9996),
+    this.backgroundColor = AppColors.secondary,
+    this.textColor = AppColors.textPrimary,
+    this.hintColor = AppColors.textSecondary,
   });
 
   @override
@@ -71,20 +72,12 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             color: widget.hintColor,
           ),
           border: InputBorder.none,
-          prefixIcon: Icon(
-            Icons.search,
-            color: widget.hintColor,
-            size: 20,
-          ),
+          prefixIcon: Icon(Icons.search, color: widget.hintColor, size: 20),
           suffixIcon: GestureDetector(
             onTap: widget.onFilterTap,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Icon(
-                Icons.tune,
-                color: widget.hintColor,
-                size: 20,
-              ),
+              child: Icon(Icons.tune, color: widget.hintColor, size: 20),
             ),
           ),
           contentPadding: const EdgeInsets.symmetric(
@@ -96,4 +89,3 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     );
   }
 }
-

@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Primary Colors
-  static const Color primary = Color(0xFFEA8A7E); // Coral/Salmon
+  static const Color primary = Color(0xFFEA8A7E);
   static const Color primaryLight = Color(0xFFF5A9A0);
   static const Color primaryDark = Color(0xFFD46A5E);
 
   // Secondary Colors
-  static const Color secondary = Color(0xFFF6F5F1); // Warm Beige/Background
+  static const Color secondary = Color(0xFFFCFCFD);
   static const Color secondaryDark = Color(0xFFE8E5DF);
 
   // Text Colors
-  static const Color textPrimary = Color(0xFF2E2B28); // Dark Brown
-  static const Color textSecondary = Color(0xFF9C9996); // Light Brown/Gray
-  static const Color textLight = Color(0xFFF6F5F1); // Light Background
+  static const Color textPrimary = Color(0xFF2E2B28);
+  static const Color textSecondary = Color(0xFF9C9996);
+  static const Color textMuted = Color(0xFF7B8B87);
+  static const Color textLight = Color(0xFFF6F5F1);
 
   // Functional Colors
   static const Color success = Color(0xFF4CAF50);
@@ -33,4 +34,3 @@ class AppColors {
   static Color textWithOpacity(double opacity) =>
       textPrimary.withOpacity(opacity);
 }
-
