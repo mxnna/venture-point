@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:venturepoint/core/theme/app_colors.dart';
 
-import 'main_navigation_page.dart';
+import 'auth/login_page.dart';
 
 class OnboardingPage extends StatelessWidget {
   static const routeName = '/onboarding';
@@ -38,9 +38,10 @@ class OnboardingPage extends StatelessWidget {
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
+                  // Navigate to login page - AuthWrapper will handle auth state checking
                   Navigator.of(
                     context,
-                  ).pushReplacementNamed(MainNavigationPage.routeName);
+                  ).pushReplacementNamed(LoginPage.routeName);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,

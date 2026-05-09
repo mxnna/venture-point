@@ -56,23 +56,27 @@ class HomePage extends StatelessWidget {
                           label: 'Discover',
                           icon: Icons.explore,
                           onPressed: () {
-                            Navigator.of(context).pushNamed(DiscoverPage.routeName);
+                            Navigator.of(
+                              context,
+                            ).pushNamed(DiscoverPage.routeName);
                           },
                         ),
                         QuickActionButton(
                           label: 'Hotels',
-                          icon: Icons.hotel,
+                          icon: Icons.apartment,
                           onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(HotelSearchPage.routeName);
+                            Navigator.of(
+                              context,
+                            ).pushNamed(HotelSearchPage.routeName);
                           },
                         ),
                         QuickActionButton(
                           label: 'Flights',
                           icon: Icons.flight,
                           onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(FlightSearchPage.routeName);
+                            Navigator.of(
+                              context,
+                            ).pushNamed(FlightSearchPage.routeName);
                           },
                         ),
                       ],

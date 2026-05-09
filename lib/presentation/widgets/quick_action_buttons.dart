@@ -44,47 +44,29 @@ class QuickActionButtons extends StatelessWidget {
       onTap: button.onPressed,
       child: Container(
         width: 110,
-        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: buttonSize,
-              height: buttonSize,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: buttonColor,
-                boxShadow: [
-                  BoxShadow(
-                    color: buttonColor.withOpacity(0.2),
-                    blurRadius: 12,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Icon(button.icon, size: iconSize, color: iconColor),
-              ),
-            ),
-            const SizedBox(height: 14),
+            Icon(button.icon, size: 32, color: buttonColor),
+            const SizedBox(height: 12),
             Text(
               button.label,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 0.5,
+                fontWeight: FontWeight.w600,
                 color: textColor,
               ),
             ),

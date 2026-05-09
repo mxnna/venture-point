@@ -1,9 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:venturepoint/core/theme/app_colors.dart';
-
-import 'onboarding_page.dart';
 
 class SplashPage extends StatefulWidget {
   static const routeName = '/';
@@ -18,12 +14,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Timer(const Duration(seconds: 2), () {
-        if (!mounted) return;
-        Navigator.of(context).pushReplacementNamed(OnboardingPage.routeName);
-      });
-    });
   }
 
   @override
