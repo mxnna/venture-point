@@ -6,7 +6,6 @@ import '../../widgets/search_bar.dart';
 import '../../widgets/quick_action_buttons.dart';
 import '../flight/flight_search_page.dart';
 import '../hotel/hotel_search_page.dart';
-import '../profile/profile_page.dart';
 import '../trips/discover_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -34,9 +33,6 @@ class HomePage extends StatelessWidget {
                       appName: 'Venture Point',
                       onNotificationTap: () {
                         // Handle notification tap
-                      },
-                      onProfileTap: () {
-                        Navigator.of(context).pushNamed(ProfilePage.routeName);
                       },
                     ),
                     const SizedBox(height: 24),

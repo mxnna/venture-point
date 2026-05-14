@@ -258,6 +258,10 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
             style: AppTextStyles.labelLarge.copyWith(color: AppColors.primary),
           ),
           const SizedBox(height: 28),
+          _buildSectionHeader('Quick facts'),
+          const SizedBox(height: 16),
+          _buildQuickFacts(),
+          const SizedBox(height: 28),
           _buildSectionHeader('Categories'),
           const SizedBox(height: 16),
           _buildCategories(),
@@ -265,6 +269,10 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
           _buildSectionHeader('Top cities', showSeeAll: true),
           const SizedBox(height: 16),
           _buildCityList(),
+          const SizedBox(height: 28),
+          _buildSectionHeader('Travel guide'),
+          const SizedBox(height: 16),
+          _buildTravelGuide(),
         ],
       ),
     );
@@ -317,6 +325,139 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
               ],
             ),
           ),
+      ],
+    );
+  }
+
+  Widget _buildQuickFacts() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: widget.country.quickFacts.map((fact) {
+        return SizedBox(
+          width: 80,
+          height: 95,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.textPrimary.withAlpha(10),
+                  blurRadius: 6,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(fact.icon, color: const Color(0xFF808080), size: 20),
+                const SizedBox(height: 6),
+                Text(
+                  fact.label,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.caption.copyWith(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 9,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  fact.value,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildTravelGuide() {
+    return Column(
+      children: [
+        ...widget.country.travelGuide.asMap().entries.map((entry) {
+          final index = entry.key;
+          final guide = entry.value;
+          final isLast = index == widget.country.travelGuide.length - 1;
+
+          return Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.textPrimary.withAlpha(10),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF0F0F0),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        guide.icon,
+                        color: const Color(0xFF808080),
+                        size: 24,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            guide.label,
+                            style: AppTextStyles.bodyMedium.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            guide.description,
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                      color: AppColors.textSecondary,
+                    ),
+                  ],
+                ),
+              ),
+              if (!isLast) const SizedBox(height: 12),
+            ],
+          );
+        }),
       ],
     );
   }

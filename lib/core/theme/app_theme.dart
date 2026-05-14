@@ -44,7 +44,7 @@ class AppTheme {
             color: AppColors.textLight,
           ),
           elevation: 4,
-          shadowColor: AppColors.primary.withOpacity(0.4),
+          shadowColor: AppColors.primary.withAlpha(102),
         ),
       ),
 
@@ -106,7 +106,7 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: AppColors.white,
         elevation: 2,
-        shadowColor: AppColors.textPrimary.withOpacity(0.1),
+        shadowColor: AppColors.textPrimary.withAlpha(26),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
       ),

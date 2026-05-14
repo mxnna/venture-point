@@ -56,7 +56,9 @@ class _ProfilePageState extends State<ProfilePage> {
       visitedCityIds: [],
     );
 
-    await _userDoc(user.uid).set(defaultProfile.toMap(), SetOptions(merge: true));
+    await _userDoc(
+      user.uid,
+    ).set(defaultProfile.toMap(), SetOptions(merge: true));
   }
 
   Future<void> _saveProfile(
@@ -75,7 +77,9 @@ class _ProfilePageState extends State<ProfilePage> {
       }
 
       final updatedData = <String, dynamic>{
-        'displayName': displayName.trim().isEmpty ? 'Traveler' : displayName.trim(),
+        'displayName': displayName.trim().isEmpty
+            ? 'Traveler'
+            : displayName.trim(),
         'email': user.email ?? 'unknown@venturepoint.app',
       };
 
@@ -92,9 +96,9 @@ class _ProfilePageState extends State<ProfilePage> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Unable to save profile: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Unable to save profile: $e')));
       }
     } finally {
       if (mounted) {
@@ -119,7 +123,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void _showEditSheet(User user, UserProfile profile) {
-    final displayNameController = TextEditingController(text: profile.displayName);
+    final displayNameController = TextEditingController(
+      text: profile.displayName,
+    );
     XFile? selectedImage;
     Uint8List? selectedImageBytes;
 
@@ -160,7 +166,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                           IconButton(
-                            icon: const Icon(Icons.close, color: AppColors.textPrimary),
+                            icon: const Icon(
+                              Icons.close,
+                              color: AppColors.textPrimary,
+                            ),
                             onPressed: () => Navigator.of(context).pop(),
                           ),
                         ],
@@ -176,10 +185,15 @@ class _ProfilePageState extends State<ProfilePage> {
                               backgroundImage: selectedImageBytes != null
                                   ? MemoryImage(selectedImageBytes!)
                                   : profile.photoBase64 != null
-                                      ? MemoryImage(base64Decode(profile.photoBase64!))
-                                      : profile.photoUrl != null
-                                          ? CachedNetworkImageProvider(profile.photoUrl!)
-                                          : const AssetImage('assets/images/person.png') as ImageProvider,
+                                  ? MemoryImage(
+                                      base64Decode(profile.photoBase64!),
+                                    )
+                                  : profile.photoUrl != null
+                                  ? CachedNetworkImageProvider(
+                                      profile.photoUrl!,
+                                    )
+                                  : const AssetImage('assets/images/person.png')
+                                        as ImageProvider,
                             ),
                             Positioned(
                               right: 0,
@@ -229,12 +243,19 @@ class _ProfilePageState extends State<ProfilePage> {
                           await Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) => CountrySelectionPage(
-                                initialSelection: (profile.visitedCountryCodes.isNotEmpty
-                                        ? profile.visitedCountryCodes
-                                        : profile.countries
-                                            .map((countryName) => countryInfoFromName(countryName)?.code ?? countryName)
-                                            .toList())
-                                    .toSet(),
+                                initialSelection:
+                                    (profile.visitedCountryCodes.isNotEmpty
+                                            ? profile.visitedCountryCodes
+                                            : profile.countries
+                                                  .map(
+                                                    (countryName) =>
+                                                        countryInfoFromName(
+                                                          countryName,
+                                                        )?.code ??
+                                                        countryName,
+                                                  )
+                                                  .toList())
+                                        .toSet(),
                               ),
                             ),
                           );
@@ -248,12 +269,19 @@ class _ProfilePageState extends State<ProfilePage> {
                           await Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) => CitySelectionPage(
-                                initialSelection: (profile.visitedCityIds.isNotEmpty
-                                        ? profile.visitedCityIds
-                                        : profile.cities
-                                            .map((cityName) => cityInfoFromName(cityName)?.id ?? cityName)
-                                            .toList())
-                                    .toSet(),
+                                initialSelection:
+                                    (profile.visitedCityIds.isNotEmpty
+                                            ? profile.visitedCityIds
+                                            : profile.cities
+                                                  .map(
+                                                    (cityName) =>
+                                                        cityInfoFromName(
+                                                          cityName,
+                                                        )?.id ??
+                                                        cityName,
+                                                  )
+                                                  .toList())
+                                        .toSet(),
                               ),
                             ),
                           );
@@ -285,6 +313,36 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: double.infinity,
+                        child: OutlinedButton.icon(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            context.read<AuthBloc>().add(
+                              AuthSignOutRequested(),
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.logout,
+                            color: AppColors.primary,
+                          ),
+                          label: const Text(
+                            'Log out',
+                            style: TextStyle(
+                              color: AppColors.primary,
+                              fontSize: 16,
+                            ),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(color: AppColors.primary),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -307,8 +365,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthUnauthenticated) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
+          Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
             LoginPage.routeName,
             (route) => false,
           );
@@ -322,7 +379,10 @@ class _ProfilePageState extends State<ProfilePage> {
           centerTitle: false,
           title: const Text(
             'Profile',
-            style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           iconTheme: const IconThemeData(color: AppColors.textPrimary),
           actions: [
@@ -364,12 +424,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       ? UserProfile.fromSnapshot(snapshot.data!)
                       : UserProfile.initialFromUser(user);
 
-                  if (!_createdDefaultProfile && (!snapshot.hasData || !snapshot.data!.exists)) {
+                  if (!_createdDefaultProfile &&
+                      (!snapshot.hasData || !snapshot.data!.exists)) {
                     _createdDefaultProfile = true;
                     _createDefaultProfile(user);
                   }
 
-                  final visitedCountryCode = profile.visitedCountryCodes.isNotEmpty
+                  final visitedCountryCode =
+                      profile.visitedCountryCodes.isNotEmpty
                       ? profile.visitedCountryCodes
                       : <String>[];
                   final visitedCityId = profile.visitedCityIds.isNotEmpty
@@ -384,10 +446,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       .map((id) => cityById[id])
                       .whereType<CityInfo>()
                       .toList();
-                  final continentCounts = _buildContinentCounts(visitedCountries);
+                  final continentCounts = _buildContinentCounts(
+                    visitedCountries,
+                  );
 
                   return ListView(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 16,
+                    ),
                     physics: const BouncingScrollPhysics(),
                     children: [
                       Center(
@@ -398,10 +465,15 @@ class _ProfilePageState extends State<ProfilePage> {
                               radius: 62,
                               backgroundColor: AppColors.secondaryDark,
                               backgroundImage: profile.photoBase64 != null
-                                  ? MemoryImage(base64Decode(profile.photoBase64!))
+                                  ? MemoryImage(
+                                      base64Decode(profile.photoBase64!),
+                                    )
                                   : profile.photoUrl != null
-                                      ? CachedNetworkImageProvider(profile.photoUrl!)
-                                      : const AssetImage('assets/images/person.png') as ImageProvider,
+                                  ? CachedNetworkImageProvider(
+                                      profile.photoUrl!,
+                                    )
+                                  : const AssetImage('assets/images/person.png')
+                                        as ImageProvider,
                             ),
                             GestureDetector(
                               onTap: () => _showEditSheet(user, profile),
@@ -441,85 +513,99 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       const SizedBox(height: 24),
-                      _buildSectionTitle('My continents', onViewAll: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => const VisitedCountriesPage()),
-                        );
-                      }),
+                      _buildSectionTitle(
+                        'My continents',
+                        onViewAll: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const VisitedCountriesPage(),
+                            ),
+                          );
+                        },
+                      ),
                       const SizedBox(height: 16),
                       SizedBox(
                         height: 220,
                         child: ListView.separated(
                           scrollDirection: Axis.vertical,
                           itemCount: continentTotals.length,
-                          separatorBuilder: (context, index) => const SizedBox(height: 12),
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 12),
                           itemBuilder: (context, index) {
-                            final continent = continentTotals.keys.elementAt(index);
+                            final continent = continentTotals.keys.elementAt(
+                              index,
+                            );
                             final total = continentTotals[continent]!;
                             final visited = continentCounts[continent] ?? 0;
                             final percent = total == 0 ? 0.0 : visited / total;
-                            return _buildContinentCard(continent, visited, total, percent);
+                            return _buildContinentCard(
+                              continent,
+                              visited,
+                              total,
+                              percent,
+                            );
                           },
                         ),
                       ),
                       const SizedBox(height: 24),
-                      _buildSectionTitle('My countries', onViewAll: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => const VisitedCountriesPage()),
-                        );
-                      }),
+                      _buildSectionTitle(
+                        'My countries',
+                        onViewAll: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const VisitedCountriesPage(),
+                            ),
+                          );
+                        },
+                      ),
                       const SizedBox(height: 12),
                       SizedBox(
                         height: 120,
                         child: visitedCountries.isEmpty
-                            ? _buildEmptyState('No visited countries yet. Tap edit or View all to add them.')
+                            ? _buildEmptyState(
+                                'No visited countries yet. Tap edit or View all to add them.',
+                              )
                             : ListView.separated(
                                 scrollDirection: Axis.horizontal,
                                 shrinkWrap: true,
                                 primary: false,
                                 physics: const BouncingScrollPhysics(),
-                                itemBuilder: (context, index) => _buildCountryCard(visitedCountries[index]),
-                                separatorBuilder: (context, index) => const SizedBox(width: 12),
+                                itemBuilder: (context, index) =>
+                                    _buildCountryCard(visitedCountries[index]),
+                                separatorBuilder: (context, index) =>
+                                    const SizedBox(width: 12),
                                 itemCount: visitedCountries.length,
                               ),
                       ),
                       const SizedBox(height: 24),
-                      _buildSectionTitle('My cities', onViewAll: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => const VisitedCitiesPage()),
-                        );
-                      }),
+                      _buildSectionTitle(
+                        'My cities',
+                        onViewAll: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const VisitedCitiesPage(),
+                            ),
+                          );
+                        },
+                      ),
                       const SizedBox(height: 12),
                       SizedBox(
                         height: 210,
                         child: visitedCities.isEmpty
-                            ? _buildEmptyState('No visited cities yet. Tap edit or View all to add them.')
+                            ? _buildEmptyState(
+                                'No visited cities yet. Tap edit or View all to add them.',
+                              )
                             : ListView.separated(
                                 scrollDirection: Axis.horizontal,
                                 shrinkWrap: true,
                                 primary: false,
                                 physics: const BouncingScrollPhysics(),
-                                itemBuilder: (context, index) => _buildCityCard(visitedCities[index]),
-                                separatorBuilder: (context, index) => const SizedBox(width: 12),
+                                itemBuilder: (context, index) =>
+                                    _buildCityCard(visitedCities[index]),
+                                separatorBuilder: (context, index) =>
+                                    const SizedBox(width: 12),
                                 itemCount: visitedCities.length,
                               ),
-                      ),
-                      const SizedBox(height: 24),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.primary,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
-                          onPressed: () {
-                            context.read<AuthBloc>().add(AuthSignOutRequested());
-                          },
-                          child: const Text('Log out', style: TextStyle(fontSize: 16)),
-                        ),
                       ),
                       const SizedBox(height: 24),
                     ],
@@ -545,10 +631,7 @@ class _ProfilePageState extends State<ProfilePage> {
             color: AppColors.textPrimary,
           ),
         ),
-        TextButton(
-          onPressed: onViewAll,
-          child: const Text('View all'),
-        ),
+        TextButton(onPressed: onViewAll, child: const Text('View all')),
       ],
     );
   }
@@ -588,17 +671,29 @@ class _ProfilePageState extends State<ProfilePage> {
             Expanded(
               child: Text(
                 title,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
-            const Icon(Icons.arrow_forward_ios, size: 18, color: AppColors.textSecondary),
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 18,
+              color: AppColors.textSecondary,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildContinentCard(String continent, int visited, int total, double percent) {
+  Widget _buildContinentCard(
+    String continent,
+    int visited,
+    int total,
+    double percent,
+  ) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -620,12 +715,18 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 Text(
                   continent,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   '$visited/$total visited',
-                  style: const TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
                 const SizedBox(height: 12),
                 LinearProgressIndicator(
@@ -702,8 +803,10 @@ class _ProfilePageState extends State<ProfilePage> {
               child: CachedNetworkImage(
                 imageUrl: city.imageUrl,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => Container(color: AppColors.secondaryDark),
-                errorWidget: (context, url, error) => Container(color: AppColors.secondaryDark),
+                placeholder: (context, url) =>
+                    Container(color: AppColors.secondaryDark),
+                errorWidget: (context, url, error) =>
+                    Container(color: AppColors.secondaryDark),
               ),
             ),
           ),
@@ -724,7 +827,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     Expanded(
                       child: Text(
                         city.countryName,
-                        style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: AppColors.textSecondary,
+                        ),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -745,7 +851,6 @@ class _ProfilePageState extends State<ProfilePage> {
     }
     return counts;
   }
-
 }
 
 class UserProfile {
@@ -786,7 +891,9 @@ class UserProfile {
     );
   }
 
-  factory UserProfile.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> snapshot) {
+  factory UserProfile.fromSnapshot(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+  ) {
     final data = snapshot.data() ?? <String, dynamic>{};
 
     return UserProfile(
@@ -797,8 +904,12 @@ class UserProfile {
       continents: [],
       countries: [],
       cities: [],
-      visitedCountryCodes: List<String>.from(data['visitedCountryCodes'] as List<dynamic>? ?? []),
-      visitedCityIds: List<String>.from(data['visitedCityIds'] as List<dynamic>? ?? []),
+      visitedCountryCodes: List<String>.from(
+        data['visitedCountryCodes'] as List<dynamic>? ?? [],
+      ),
+      visitedCityIds: List<String>.from(
+        data['visitedCityIds'] as List<dynamic>? ?? [],
+      ),
     );
   }
 

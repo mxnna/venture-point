@@ -21,12 +21,14 @@ class ExperienceDestination {
   final String subtitle;
   final String image;
   final double rating;
+  final String location;
 
   const ExperienceDestination({
     required this.title,
     required this.subtitle,
     required this.image,
     required this.rating,
+    this.location = '',
   });
 }
 
@@ -43,6 +45,30 @@ class DestinationEvent {
     required this.location,
     required this.category,
     this.image = '',
+  });
+}
+
+class QuickFact {
+  final String label;
+  final String value;
+  final IconData icon;
+
+  const QuickFact({
+    required this.label,
+    required this.value,
+    required this.icon,
+  });
+}
+
+class TravelGuideFact {
+  final String label;
+  final String description;
+  final IconData icon;
+
+  const TravelGuideFact({
+    required this.label,
+    required this.description,
+    required this.icon,
   });
 }
 
@@ -73,7 +99,10 @@ class CountryData {
   final double rating;
   final String description;
   final String image;
+  final int cityCount;
   final List<CityData> topCities;
+  final List<QuickFact> quickFacts;
+  final List<TravelGuideFact> travelGuide;
 
   const CountryData({
     required this.name,
@@ -82,7 +111,10 @@ class CountryData {
     required this.rating,
     required this.description,
     required this.image,
+    required this.cityCount,
     required this.topCities,
+    required this.quickFacts,
+    required this.travelGuide,
   });
 }
 
@@ -582,7 +614,20 @@ final topCountries = <CountryData>[
         'Egypt is a country that connects Northeast Africa with the Middle East. It is known for its ancient history, iconic landmarks, and rich culture.',
     image:
         'https://images.unsplash.com/photo-1574864745093-5566c5be5855?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 27,
     topCities: [topCities[0], topCities[2], topCities[3]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +2', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'Arabic', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'EGP', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Oct – Apr', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'Japan',
@@ -593,7 +638,20 @@ final topCountries = <CountryData>[
         'Japan blends ancient temples, vibrant cities, and nature into a seamless travel experience.',
     image:
         'https://images.unsplash.com/photo-1717226263737-f314f752dc61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 23,
     topCities: [topCities[1]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +9', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'Japanese', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'JPY', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Mar – May', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'Italy',
@@ -604,7 +662,20 @@ final topCountries = <CountryData>[
         'Italy offers world-class art, food, coastlines, and cities filled with history and modern style.',
     image:
         'https://plus.unsplash.com/premium_photo-1675975678457-d70708bf77c8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 20,
     topCities: [],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +1', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'Italian', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'EUR', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Apr – Jun', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'France',
@@ -615,7 +686,20 @@ final topCountries = <CountryData>[
         'France is famous for its culture, cuisine, architecture, and unforgettable cities like Paris.',
     image:
         'https://images.unsplash.com/photo-1652117524850-33f12e2444b2?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 25,
     topCities: [topCities[4]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +1', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'French', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'EUR', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'May – Sep', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'UAE',
@@ -626,7 +710,20 @@ final topCountries = <CountryData>[
         'UAE is known for luxury shopping, modern skylines, and vibrant desert escapes.',
     image:
         'https://plus.unsplash.com/premium_photo-1661916762370-4768aa1fc4c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 7,
     topCities: [topCities[5]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +4', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'Arabic', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'AED', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Oct – Apr', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'United States',
@@ -637,7 +734,20 @@ final topCountries = <CountryData>[
         'The United States features iconic cities, national parks, and diverse cultural scenes.',
     image:
         'https://images.unsplash.com/photo-1615633134784-2a88832815d1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 45,
     topCities: [topCities[6]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT -5', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'English', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'USD', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Sep – Nov', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'United Kingdom',
@@ -648,7 +758,20 @@ final topCountries = <CountryData>[
         'United Kingdom mixes royal tradition, historic landmarks, and metropolitan culture.',
     image:
         'https://images.unsplash.com/photo-1532219362275-a1cbe9dc3602?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 14,
     topCities: [topCities[7]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +0', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'English', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'GBP', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'May – Sep', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'Australia',
@@ -659,7 +782,20 @@ final topCountries = <CountryData>[
         'Australia is home to coastal cities, natural wonders, and outdoor adventure.',
     image:
         'https://images.unsplash.com/photo-1689834678768-5de6a55b68b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 15,
     topCities: [topCities[8]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +10', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'English', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'AUD', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Sep – Nov', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'Brazil',
@@ -670,7 +806,20 @@ final topCountries = <CountryData>[
         'Brazil is famous for lively beaches, vibrant festivals, and tropical scenery.',
     image:
         'https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 20,
     topCities: [topCities[9]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT -3', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'Portuguese', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'BRL', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Dec – Mar', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
   CountryData(
     name: 'South Africa',
@@ -681,7 +830,20 @@ final topCountries = <CountryData>[
         'South Africa offers coastal beauty, wildlife safaris, and historic cities.',
     image:
         'https://images.unsplash.com/photo-1673889806169-a5aee733374f?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    cityCount: 10,
     topCities: [topCities[10]],
+    quickFacts: [
+      QuickFact(label: 'Time zone', value: 'GMT +2', icon: Icons.schedule),
+      QuickFact(label: 'Language', value: 'English', icon: Icons.language),
+      QuickFact(label: 'Currency', value: 'ZAR', icon: Icons.monetization_on),
+      QuickFact(label: 'Best time to visit', value: 'Nov – Mar', icon: Icons.calendar_today),
+    ],
+    travelGuide: [
+      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
+      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
+      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
+      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+    ],
   ),
 ];
 
@@ -692,6 +854,7 @@ final topExperiences = <ExperienceDestination>[
     image:
         'https://img.liveaboard.com/imageserver/picture_library/site/diving/egypt/liveaboard-egypt-blueplanet-xxl.jpg?tr=w-1920,h-800,f-jpeg',
     rating: 4.9,
+    location: 'Sharm al-Sheikh',
   ),
   const ExperienceDestination(
     title: 'Nile Cruise',
@@ -699,6 +862,7 @@ final topExperiences = <ExperienceDestination>[
     image:
         'https://dnzyghjhtzcpnbqmfcrs.supabase.co/storage/v1/object/public/tours/public/1777821968913-5700d0d7-b3df-472f-a799-7d9e777bb3f3.jpg',
     rating: 4.8,
+    location: 'Cairo – Aswan',
   ),
   const ExperienceDestination(
     title: 'Desert Safari',
@@ -706,6 +870,7 @@ final topExperiences = <ExperienceDestination>[
     image:
         'https://ftstravels.com/wp-content/uploads/2026/03/desert-safari-egypt-sharm-el-sheikh-desert-buggy-rally-31608.jpg',
     rating: 4.7,
+    location: 'White Desert',
   ),
   const ExperienceDestination(
     title: 'Pyramids of Giza',
@@ -713,5 +878,6 @@ final topExperiences = <ExperienceDestination>[
     image:
         'https://images.unsplash.com/photo-1718403800110-bd008d361517?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     rating: 4.9,
+    location: 'Giza',
   ),
 ];
