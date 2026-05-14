@@ -228,7 +228,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             children: [
                               Expanded(
                                 child: Divider(
-                                  color: AppColors.textSecondary.withValues(alpha: 
+                                  color: AppColors.textSecondary.withOpacity(
                                     0.35,
                                   ),
                                   thickness: 1,
@@ -248,7 +248,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               ),
                               Expanded(
                                 child: Divider(
-                                  color: AppColors.textSecondary.withValues(alpha: 
+                                  color: AppColors.textSecondary.withOpacity(
                                     0.35,
                                   ),
                                   thickness: 1,
@@ -267,7 +267,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 borderRadius: BorderRadius.circular(18),
                               ),
                               side: BorderSide(
-                                color: AppColors.textSecondary.withValues(alpha: 
+                                color: AppColors.textSecondary.withOpacity(
                                   0.25,
                                 ),
                               ),

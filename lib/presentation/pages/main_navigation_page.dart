@@ -27,35 +27,32 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   );
 
   Widget _buildTabNavigator(int index) {
-    return NavigatorPopHandler(
-      enabled: index == _selectedIndex,
-      child: Navigator(
-        key: _navigatorKeys[index],
-        onGenerateRoute: (RouteSettings settings) {
-          if (settings.name == Navigator.defaultRouteName) {
-            return MaterialPageRoute(builder: (_) => _buildInitialPage(index));
-          }
+    return Navigator(
+      key: _navigatorKeys[index],
+      onGenerateRoute: (RouteSettings settings) {
+        if (settings.name == Navigator.defaultRouteName) {
+          return MaterialPageRoute(builder: (_) => _buildInitialPage(index));
+        }
 
-          switch (settings.name) {
-            case DiscoverPage.routeName:
-              return MaterialPageRoute(builder: (_) => const DiscoverPage());
-            case FlightSearchPage.routeName:
-              return MaterialPageRoute(builder: (_) => const FlightSearchPage());
-            case HotelSearchPage.routeName:
-              return MaterialPageRoute(builder: (_) => const HotelSearchPage());
-            case ProfilePage.routeName:
-              return MaterialPageRoute(builder: (_) => const ProfilePage());
-            case HomePage.routeName:
-              return MaterialPageRoute(builder: (_) => const HomePage());
-            case SavedItemsPage.routeName:
-              return MaterialPageRoute(builder: (_) => const SavedItemsPage());
-            case TripsPage.routeName:
-              return MaterialPageRoute(builder: (_) => const TripsPage());
-            default:
-              return MaterialPageRoute(builder: (_) => _buildInitialPage(index));
-          }
-        },
-      ),
+        switch (settings.name) {
+          case DiscoverPage.routeName:
+            return MaterialPageRoute(builder: (_) => const DiscoverPage());
+          case FlightSearchPage.routeName:
+            return MaterialPageRoute(builder: (_) => const FlightSearchPage());
+          case HotelSearchPage.routeName:
+            return MaterialPageRoute(builder: (_) => const HotelSearchPage());
+          case ProfilePage.routeName:
+            return MaterialPageRoute(builder: (_) => const ProfilePage());
+          case HomePage.routeName:
+            return MaterialPageRoute(builder: (_) => const HomePage());
+          case SavedItemsPage.routeName:
+            return MaterialPageRoute(builder: (_) => const SavedItemsPage());
+          case TripsPage.routeName:
+            return MaterialPageRoute(builder: (_) => const TripsPage());
+          default:
+            return MaterialPageRoute(builder: (_) => _buildInitialPage(index));
+        }
+      },
     );
   }
 
@@ -73,6 +70,19 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
     }
   }
 
+  Future<bool> _onWillPop() async {
+    final NavigatorState? currentNavigator =
+        _navigatorKeys[_selectedIndex].currentState;
+    if (currentNavigator == null) {
+      return true;
+    }
+
+    if (await currentNavigator.maybePop()) {
+      return false;
+    }
+    return true;
+  }
+
   void _onItemTapped(int index) {
     if (_selectedIndex == index) {
       _navigatorKeys[index].currentState?.popUntil((route) => route.isFirst);
@@ -86,23 +96,29 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: List.generate(4, _buildTabNavigator),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Saved'),
-          BottomNavigationBarItem(icon: Icon(Icons.work), label: 'Trips'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.textPrimary.withAlpha(153),
-        backgroundColor: AppColors.secondary,
-        onTap: _onItemTapped,
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: List.generate(4, _buildTabNavigator),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.explore),
+              label: 'Explore',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Saved'),
+            BottomNavigationBarItem(icon: Icon(Icons.work), label: 'Trips'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: AppColors.primary,
+          unselectedItemColor: AppColors.textPrimary.withOpacity(0.6),
+          backgroundColor: AppColors.secondary,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
