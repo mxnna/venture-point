@@ -31,7 +31,7 @@ class DiscoverPage extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: topCountries.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 16),
+                separatorBuilder: (_, _) => const SizedBox(width: 16),
                 itemBuilder: (context, index) {
                   final country = topCountries[index];
                   return _buildCountryCard(context, country);
@@ -46,7 +46,7 @@ class DiscoverPage extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: topCities.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 14),
+                separatorBuilder: (_, _) => const SizedBox(width: 14),
                 itemBuilder: (context, index) {
                   final city = topCities[index];
                   return _buildCityCard(context, city);
@@ -61,7 +61,7 @@ class DiscoverPage extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: topExperiences.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 16),
+                separatorBuilder: (_, _) => const SizedBox(width: 16),
                 itemBuilder: (context, index) {
                   final experience = topExperiences[index];
                   return _buildExperienceCard(context, experience);
@@ -109,7 +109,7 @@ class DiscoverPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: AppColors.textPrimary.withOpacity(0.06),
+                color: AppColors.textPrimary.withAlpha(15),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -171,7 +171,7 @@ class DiscoverPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(22),
           boxShadow: [
             BoxShadow(
-              color: AppColors.textPrimary.withOpacity(0.06),
+              color: AppColors.textPrimary.withValues(alpha: 0.06),
               blurRadius: 18,
               offset: const Offset(0, 10),
             ),
@@ -213,7 +213,7 @@ class DiscoverPage extends StatelessWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.white.withOpacity(0.85),
+                          color: AppColors.white.withAlpha(217),
                           borderRadius: BorderRadius.circular(14),
                         ),
                         child: Text(
@@ -242,7 +242,7 @@ class DiscoverPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${country.topCities.length} cities',
+                    '${country.cityCount} cities',
                     style: AppTextStyles.caption.copyWith(
                       color: AppColors.textSecondary,
                     ),
@@ -270,7 +270,7 @@ class DiscoverPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(22),
           boxShadow: [
             BoxShadow(
-              color: AppColors.textPrimary.withOpacity(0.06),
+              color: AppColors.textPrimary.withValues(alpha: 0.06),
               blurRadius: 18,
               offset: const Offset(0, 10),
             ),
@@ -341,7 +341,7 @@ class DiscoverPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withOpacity(0.06),
+            color: AppColors.textPrimary.withValues(alpha: 0.06),
             blurRadius: 18,
             offset: const Offset(0, 10),
           ),
@@ -373,12 +373,29 @@ class DiscoverPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
-            child: Text(
-              experience.title,
-              style: AppTextStyles.bodyMedium,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              softWrap: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  experience.title,
+                  style: AppTextStyles.bodyMedium,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                ),
+                if (experience.location.isNotEmpty) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    experience.location,
+                    style: AppTextStyles.caption.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                  ),
+                ],
+              ],
             ),
           ),
         ],

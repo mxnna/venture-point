@@ -262,7 +262,7 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               Expanded(
                                 child: Divider(
-                                  color: AppColors.textSecondary.withOpacity(
+                                  color: AppColors.textSecondary.withValues(alpha: 
                                     0.35,
                                   ),
                                   thickness: 1,
@@ -282,7 +282,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               Expanded(
                                 child: Divider(
-                                  color: AppColors.textSecondary.withOpacity(
+                                  color: AppColors.textSecondary.withValues(alpha: 
                                     0.35,
                                   ),
                                   thickness: 1,
@@ -301,7 +301,7 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: BorderRadius.circular(18),
                               ),
                               side: BorderSide(
-                                color: AppColors.textSecondary.withOpacity(
+                                color: AppColors.textSecondary.withValues(alpha: 
                                   0.25,
                                 ),
                               ),

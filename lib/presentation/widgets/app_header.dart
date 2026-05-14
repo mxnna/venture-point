@@ -6,6 +6,7 @@ class AppHeader extends StatelessWidget {
   final String appName;
   final VoidCallback? onNotificationTap;
   final VoidCallback? onProfileTap;
+  final ImageProvider? profileImage;
 
   const AppHeader({
     super.key,
@@ -13,6 +14,7 @@ class AppHeader extends StatelessWidget {
     required this.appName,
     this.onNotificationTap,
     this.onProfileTap,
+    this.profileImage,
   });
 
   @override
@@ -59,14 +61,13 @@ class AppHeader extends StatelessWidget {
           const SizedBox(width: 12),
           GestureDetector(
             onTap: onProfileTap,
-            child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.primary,
-              ),
-              child: Icon(Icons.person, color: AppColors.secondary, size: 20),
+            child: CircleAvatar(
+              radius: 20,
+              backgroundColor: AppColors.primary,
+              backgroundImage: profileImage,
+              child: profileImage == null
+                  ? Icon(Icons.person, color: AppColors.secondary, size: 20)
+                  : null,
             ),
           ),
         ],

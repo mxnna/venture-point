@@ -30,7 +30,7 @@ class AppColors {
 
   // Transparency variants
   static Color primaryWithOpacity(double opacity) =>
-      primary.withOpacity(opacity);
+      primary.withValues(alpha: opacity);
   static Color textWithOpacity(double opacity) =>
-      textPrimary.withOpacity(opacity);
+      textPrimary.withValues(alpha: opacity);
 }
