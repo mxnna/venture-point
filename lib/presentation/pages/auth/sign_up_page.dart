@@ -168,267 +168,260 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                            Text(
-                              'Create your account',
-                              style: GoogleFonts.poppins(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                        Text(
+                          'Create your account',
+                          style: GoogleFonts.poppins(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Let\'s get you started on your next adventure.',
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        const SizedBox(height: 26),
+                        TextFormField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            prefixIcon: const Icon(CupertinoIcons.mail),
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
                               ),
-                              textAlign: TextAlign.left,
                             ),
-                            const SizedBox(height: 12),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 18,
+                              horizontal: 16,
+                            ),
+                          ),
+                          keyboardType: TextInputType.emailAddress,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            }
+                            if (!RegExp(
+                              r'^[^@]+@[^@]+\.[^@]+',
+                            ).hasMatch(value)) {
+                              return 'Please enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            prefixIcon: const Icon(CupertinoIcons.lock),
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 18,
+                              horizontal: 16,
+                            ),
+                          ),
+                          obscureText: true,
+                          onChanged: (value) => setState(() {}),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your password';
+                            }
+                            if (!_hasMinLength || !_hasMaxLength) {
+                              return 'Password must be 8-64 characters long';
+                            }
+                            if (!_hasUppercase) {
+                              return 'Password must contain an uppercase letter';
+                            }
+                            if (!_hasLowercase) {
+                              return 'Password must contain a lowercase letter';
+                            }
+                            if (!_hasDigit) {
+                              return 'Password must contain a number';
+                            }
+                            if (!_hasSpecialChar) {
+                              return 'Password must contain a special character';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 16),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 18,
+                            vertical: 16,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade100,
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Password requirements',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                'Your password must include:',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 13,
+                                  color: AppColors.textSecondary,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              _buildRequirementRow(
+                                '8-64 characters',
+                                _hasMinLength && _hasMaxLength,
+                              ),
+                              const SizedBox(height: 6),
+                              _buildRequirementRow(
+                                'Uppercase letter (A-Z)',
+                                _hasUppercase,
+                              ),
+                              const SizedBox(height: 6),
+                              _buildRequirementRow(
+                                'Lowercase letter (a-z)',
+                                _hasLowercase,
+                              ),
+                              const SizedBox(height: 6),
+                              _buildRequirementRow('Number (0-9)', _hasDigit),
+                              const SizedBox(height: 6),
+                              _buildRequirementRow(
+                                'Special character (!@#\$%...)',
+                                _hasSpecialChar,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _confirmPasswordController,
+                          decoration: InputDecoration(
+                            labelText: 'Confirm Password',
+                            prefixIcon: const Icon(CupertinoIcons.lock),
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 18,
+                              horizontal: 16,
+                            ),
+                          ),
+                          obscureText: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please confirm your password';
+                            }
+                            if (value != _passwordController.text) {
+                              return 'Passwords do not match';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 22),
+                        ElevatedButton(
+                          onPressed: (_isLoading || !_isPasswordValid)
+                              ? null
+                              : _onSignUpPressed,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            foregroundColor: AppColors.textLight,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                          ),
+                          child: _isLoading
+                              ? const SizedBox(
+                                  height: 18,
+                                  width: 18,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 2.2,
+                                  ),
+                                )
+                              : const Text('Sign up'),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
                             Text(
-                              'Let\'s get you started on your next adventure.',
-                              textAlign: TextAlign.left,
+                              'Already have an account?',
                               style: GoogleFonts.poppins(
                                 fontSize: 14,
                                 color: AppColors.textSecondary,
                               ),
                             ),
-                            const SizedBox(height: 26),
-                            TextFormField(
-                              controller: _emailController,
-                              decoration: InputDecoration(
-                                labelText: 'Email',
-                                prefixIcon: const Icon(CupertinoIcons.mail),
-                                filled: true,
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const LoginPage(),
                                   ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 18,
-                                  horizontal: 16,
-                                ),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your email';
-                                }
-                                if (!RegExp(
-                                  r'^[^@]+@[^@]+\.[^@]+',
-                                ).hasMatch(value)) {
-                                  return 'Please enter a valid email';
-                                }
-                                return null;
+                                );
                               },
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              controller: _passwordController,
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                prefixIcon: const Icon(CupertinoIcons.lock),
-                                filled: true,
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 18,
-                                  horizontal: 16,
+                              style: TextButton.styleFrom(
+                                foregroundColor: AppColors.primary,
+                                textStyle: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              obscureText: true,
-                              onChanged: (value) => setState(() {}),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your password';
-                                }
-                                if (!_hasMinLength || !_hasMaxLength) {
-                                  return 'Password must be 8-64 characters long';
-                                }
-                                if (!_hasUppercase) {
-                                  return 'Password must contain an uppercase letter';
-                                }
-                                if (!_hasLowercase) {
-                                  return 'Password must contain a lowercase letter';
-                                }
-                                if (!_hasDigit) {
-                                  return 'Password must contain a number';
-                                }
-                                if (!_hasSpecialChar) {
-                                  return 'Password must contain a special character';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 16),
-                            Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 18,
-                                vertical: 16,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade100,
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Password requirements',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Text(
-                                    'Your password must include:',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 13,
-                                      color: AppColors.textSecondary,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  _buildRequirementRow(
-                                    '8-64 characters',
-                                    _hasMinLength && _hasMaxLength,
-                                  ),
-                                  const SizedBox(height: 6),
-                                  _buildRequirementRow(
-                                    'Uppercase letter (A-Z)',
-                                    _hasUppercase,
-                                  ),
-                                  const SizedBox(height: 6),
-                                  _buildRequirementRow(
-                                    'Lowercase letter (a-z)',
-                                    _hasLowercase,
-                                  ),
-                                  const SizedBox(height: 6),
-                                  _buildRequirementRow(
-                                    'Number (0-9)',
-                                    _hasDigit,
-                                  ),
-                                  const SizedBox(height: 6),
-                                  _buildRequirementRow(
-                                    'Special character (!@#\$%...)',
-                                    _hasSpecialChar,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              controller: _confirmPasswordController,
-                              decoration: InputDecoration(
-                                labelText: 'Confirm Password',
-                                prefixIcon: const Icon(CupertinoIcons.lock),
-                                filled: true,
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 18,
-                                  horizontal: 16,
-                                ),
-                              ),
-                              obscureText: true,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please confirm your password';
-                                }
-                                if (value != _passwordController.text) {
-                                  return 'Passwords do not match';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 22),
-                            ElevatedButton(
-                              onPressed: (_isLoading || !_isPasswordValid)
-                                  ? null
-                                  : _onSignUpPressed,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.primary,
-                                foregroundColor: AppColors.textLight,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 16,
-                                ),
-                              ),
-                              child: _isLoading
-                                  ? const SizedBox(
-                                      height: 18,
-                                      width: 18,
-                                      child: CircularProgressIndicator(
-                                        color: Colors.white,
-                                        strokeWidth: 2.2,
-                                      ),
-                                    )
-                                  : const Text('Sign up'),
-                            ),
-                            const SizedBox(height: 16),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Already have an account?',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    color: AppColors.textSecondary,
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) => const LoginPage(),
-                                      ),
-                                    );
-                                  },
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: AppColors.primary,
-                                    textStyle: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  child: const Text('Log in'),
-                                ),
-                              ],
+                              child: const Text('Log in'),
                             ),
                           ],
                         ),
-                      ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

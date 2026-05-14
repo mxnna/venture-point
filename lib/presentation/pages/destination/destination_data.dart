@@ -620,13 +620,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +2', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'Arabic', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'EGP', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Oct – Apr', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Oct – Apr',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -644,13 +664,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +9', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'Japanese', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'JPY', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Mar – May', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Mar – May',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -668,13 +708,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +1', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'Italian', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'EUR', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Apr – Jun', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Apr – Jun',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -692,13 +752,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +1', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'French', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'EUR', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'May – Sep', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'May – Sep',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -716,13 +796,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +4', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'Arabic', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'AED', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Oct – Apr', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Oct – Apr',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -740,13 +840,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT -5', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'English', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'USD', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Sep – Nov', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Sep – Nov',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -764,13 +884,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +0', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'English', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'GBP', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'May – Sep', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'May – Sep',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -788,13 +928,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +10', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'English', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'AUD', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Sep – Nov', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Sep – Nov',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -812,13 +972,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT -3', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'Portuguese', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'BRL', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Dec – Mar', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Dec – Mar',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
   CountryData(
@@ -836,13 +1016,33 @@ final topCountries = <CountryData>[
       QuickFact(label: 'Time zone', value: 'GMT +2', icon: Icons.schedule),
       QuickFact(label: 'Language', value: 'English', icon: Icons.language),
       QuickFact(label: 'Currency', value: 'ZAR', icon: Icons.monetization_on),
-      QuickFact(label: 'Best time to visit', value: 'Nov – Mar', icon: Icons.calendar_today),
+      QuickFact(
+        label: 'Best time to visit',
+        value: 'Nov – Mar',
+        icon: Icons.calendar_today,
+      ),
     ],
     travelGuide: [
-      TravelGuideFact(label: 'Visa & entry', description: 'Requirements & documents', icon: Icons.card_travel),
-      TravelGuideFact(label: 'Safety', description: 'Health, safety & emergency', icon: Icons.health_and_safety),
-      TravelGuideFact(label: 'Travel tips', description: 'Local etiquette & useful tips', icon: Icons.lightbulb),
-      TravelGuideFact(label: 'Tour guides', description: 'Expert guides & book tours', icon: Icons.tour),
+      TravelGuideFact(
+        label: 'Visa & entry',
+        description: 'Requirements & documents',
+        icon: Icons.card_travel,
+      ),
+      TravelGuideFact(
+        label: 'Safety',
+        description: 'Health, safety & emergency',
+        icon: Icons.health_and_safety,
+      ),
+      TravelGuideFact(
+        label: 'Travel tips',
+        description: 'Local etiquette & useful tips',
+        icon: Icons.lightbulb,
+      ),
+      TravelGuideFact(
+        label: 'Tour guides',
+        description: 'Expert guides & book tours',
+        icon: Icons.tour,
+      ),
     ],
   ),
 ];

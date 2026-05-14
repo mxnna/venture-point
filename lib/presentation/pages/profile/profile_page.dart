@@ -365,10 +365,10 @@ class _ProfilePageState extends State<ProfilePage> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthUnauthenticated) {
-          Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
-            LoginPage.routeName,
-            (route) => false,
-          );
+          Navigator.of(
+            context,
+            rootNavigator: true,
+          ).pushNamedAndRemoveUntil(LoginPage.routeName, (route) => false);
         }
       },
       child: Scaffold(

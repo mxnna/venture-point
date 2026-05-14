@@ -457,7 +457,7 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
               if (!isLast) const SizedBox(height: 12),
             ],
           );
-        }),
+        }).toList(),
       ],
     );
   }

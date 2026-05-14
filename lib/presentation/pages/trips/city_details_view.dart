@@ -65,8 +65,8 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.black.withValues(alpha: 0.12),
-                Colors.black.withValues(alpha: 0.46),
+                Colors.black.withOpacity(0.12),
+                Colors.black.withOpacity(0.46),
               ],
             ),
           ),
@@ -127,7 +127,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
       child: Container(
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
-          color: AppColors.white.withValues(alpha: 0.85),
+          color: AppColors.white.withOpacity(0.85),
           borderRadius: BorderRadius.circular(14),
         ),
         child: const Icon(Icons.arrow_back_ios_new, size: 16),
@@ -139,7 +139,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
     return Container(
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        color: AppColors.white.withAlpha(217),
+        color: AppColors.white.withOpacity(0.85),
         borderRadius: BorderRadius.circular(14),
       ),
       child: const Icon(Icons.favorite_border, size: 16),
@@ -248,7 +248,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.05),
+            color: AppColors.textPrimary.withOpacity(0.05),
             blurRadius: 16,
             offset: const Offset(0, 8),
           ),
@@ -260,12 +260,12 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: AppColors.textSecondary.withValues(alpha: 0.12),
+              color: AppColors.textSecondary.withOpacity(0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
               transport['icon'] as IconData,
-              color: AppColors.textSecondary.withValues(alpha: 0.85),
+              color: AppColors.textSecondary.withOpacity(0.85),
               size: 20,
             ),
           ),
@@ -297,7 +297,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
             transport['price'] as String,
             textAlign: TextAlign.right,
             style: AppTextStyles.bodySmall.copyWith(
-              color: AppColors.textSecondary.withValues(alpha: 0.85),
+              color: AppColors.textSecondary.withOpacity(0.85),
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -311,13 +311,13 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
       'icon': Icons.train,
       'label': 'Metro',
       'subtitle': 'Fast & affordable',
-      'price': 'EGP 10 – 20',
+      'price': 'EGP 6 – 20',
     },
     {
       'icon': Icons.car_rental,
       'label': 'Uber / Careem',
       'subtitle': 'Convenient & safe',
-      'price': 'EGP 40+',
+      'price': 'From EGP 40',
     },
     {
       'icon': Icons.local_taxi,
@@ -329,13 +329,13 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
       'icon': Icons.directions_bus,
       'label': 'Bus',
       'subtitle': 'Very budget friendly',
-      'price': 'EGP 12 – 25',
+      'price': 'EGP 5 – 10',
     },
     {
       'icon': Icons.sailing,
       'label': 'Nile Ferry',
       'subtitle': 'Scenic way across the Nile',
-      'price': 'EGP 10 – 30',
+      'price': 'EGP 5 – 15',
     },
     {
       'icon': Icons.directions_walk,
@@ -368,7 +368,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: _mustTryDishes.length,
-            separatorBuilder: (_, _) => const SizedBox(width: 16),
+            separatorBuilder: (_, __) => const SizedBox(width: 16),
             itemBuilder: (context, index) {
               return _buildDishCard(_mustTryDishes[index]);
             },
@@ -394,7 +394,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: _diningAtmosphere.length,
-            separatorBuilder: (_, _) => const SizedBox(width: 16),
+            separatorBuilder: (_, __) => const SizedBox(width: 16),
             itemBuilder: (context, index) {
               return _buildDiningAtmosphereCard(_diningAtmosphere[index]);
             },
@@ -410,10 +410,10 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.textPrimary.withValues(alpha: 0.08)),
+        border: Border.all(color: AppColors.textPrimary.withOpacity(0.08)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.03),
+            color: AppColors.textPrimary.withOpacity(0.03),
             blurRadius: 12,
             offset: const Offset(0, 6),
           ),
@@ -447,7 +447,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
                         end: Alignment.bottomCenter,
                         colors: [
                           Colors.transparent,
-                          Colors.black.withValues(alpha: 0.3),
+                          Colors.black.withOpacity(0.3),
                         ],
                       ),
                     ),
@@ -498,10 +498,10 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         height: 180,
         decoration: BoxDecoration(
           color: AppColors.white,
-          border: Border.all(color: AppColors.textPrimary.withValues(alpha: 0.08)),
+          border: Border.all(color: AppColors.textPrimary.withOpacity(0.08)),
           boxShadow: [
             BoxShadow(
-              color: AppColors.textPrimary.withValues(alpha: 0.03),
+              color: AppColors.textPrimary.withOpacity(0.03),
               blurRadius: 12,
               offset: const Offset(0, 6),
             ),
@@ -517,7 +517,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.transparent, Colors.black.withValues(alpha: 0.35)],
+                  colors: [Colors.transparent, Colors.black.withOpacity(0.35)],
                 ),
               ),
             ),
@@ -577,7 +577,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.05),
+            color: AppColors.textPrimary.withOpacity(0.05),
             blurRadius: 12,
             offset: const Offset(0, 6),
           ),
@@ -590,12 +590,12 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: AppColors.textSecondary.withValues(alpha: 0.12),
+              color: AppColors.textSecondary.withOpacity(0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
               _cultureHighlightIcon(item['label']!),
-              color: AppColors.textSecondary.withValues(alpha: 0.85),
+              color: AppColors.textSecondary.withOpacity(0.85),
               size: 18,
             ),
           ),
@@ -678,7 +678,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.04),
+            color: AppColors.textPrimary.withOpacity(0.04),
             blurRadius: 12,
             offset: const Offset(0, 6),
           ),
@@ -691,12 +691,12 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
             width: 36,
             height: 36,
             decoration: BoxDecoration(
-              color: AppColors.textSecondary.withValues(alpha: 0.12),
+              color: AppColors.textSecondary.withOpacity(0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
               _infoIcon(info['label']!),
-              color: AppColors.textSecondary.withValues(alpha: 0.85),
+              color: AppColors.textSecondary.withOpacity(0.85),
               size: 18,
             ),
           ),
@@ -1383,7 +1383,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
             scrollDirection: Axis.horizontal,
             itemCount: _glanceHighlights.length,
             padding: const EdgeInsets.only(right: 6),
-            separatorBuilder: (_, _) => const SizedBox(width: 16),
+            separatorBuilder: (_, __) => const SizedBox(width: 16),
             itemBuilder: (context, index) {
               return _buildGlanceCard(_glanceHighlights[index]);
             },
@@ -1399,10 +1399,10 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.textPrimary.withValues(alpha: 0.08)),
+        border: Border.all(color: AppColors.textPrimary.withOpacity(0.08)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.04),
+            color: AppColors.textPrimary.withOpacity(0.04),
             blurRadius: 18,
             offset: const Offset(0, 10),
           ),
@@ -1483,7 +1483,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         border: Border.all(
           color: isSelected
               ? Colors.transparent
-              : AppColors.textSecondary.withValues(alpha: 0.16),
+              : AppColors.textSecondary.withOpacity(0.16),
         ),
       ),
       child: Text(
@@ -1504,7 +1504,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.06),
+            color: AppColors.textPrimary.withOpacity(0.06),
             blurRadius: 14,
             offset: const Offset(0, 6),
           ),
@@ -1552,7 +1552,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: AppColors.primary.withValues(alpha: 0.12),
+                      color: AppColors.primary.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Text(
@@ -1714,7 +1714,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.06),
+            color: AppColors.textPrimary.withOpacity(0.06),
             blurRadius: 18,
             offset: const Offset(0, 10),
           ),
@@ -1726,7 +1726,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.12),
+              color: AppColors.primary.withOpacity(0.12),
               borderRadius: BorderRadius.circular(18),
             ),
             child: Icon(icon, color: AppColors.primary, size: 24),
@@ -1762,112 +1762,119 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: AppColors.textPrimary.withValues(alpha: 0.05),
+            color: AppColors.textPrimary.withOpacity(0.05),
             blurRadius: 16,
             offset: const Offset(0, 8),
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Stack(
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.horizontal(
-              left: Radius.circular(20),
-            ),
-            child: SizedBox(
-              width: 110,
-              height: double.infinity,
-              child: event.image.isNotEmpty
-                  ? Image.network(
-                      event.image,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.horizontal(
+                  left: Radius.circular(20),
+                ),
+                child: SizedBox(
+                  width: 110,
+                  height: double.infinity,
+                  child: event.image.isNotEmpty
+                      ? Image.network(
+                          event.image,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: AppColors.secondaryDark,
+                              child: const Icon(
+                                Icons.image_not_supported,
+                                color: AppColors.textSecondary,
+                                size: 30,
+                              ),
+                            );
+                          },
+                        )
+                      : Container(
                           color: AppColors.secondaryDark,
                           child: const Icon(
                             Icons.image_not_supported,
                             color: AppColors.textSecondary,
                             size: 30,
                           ),
-                        );
-                      },
-                    )
-                  : Container(
-                      color: AppColors.secondaryDark,
-                      child: const Icon(
-                        Icons.image_not_supported,
-                        color: AppColors.textSecondary,
-                        size: 30,
-                      ),
-                    ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(14, 10, 10, 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
+                        ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 10, 52, 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        event.title,
-                        style: AppTextStyles.bodyLarge.copyWith(fontSize: 15),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            event.title,
+                            style: AppTextStyles.bodyLarge.copyWith(
+                              fontSize: 15,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            event.location,
+                            style: AppTextStyles.caption.copyWith(
+                              color: AppColors.textSecondary,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        event.location,
-                        style: AppTextStyles.caption.copyWith(
-                          color: AppColors.textSecondary,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              event.dateRange,
+                              style: AppTextStyles.captionSmall.copyWith(
+                                color: AppColors.textSecondary,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.secondaryDark,
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Text(
+                              event.category,
+                              style: AppTextStyles.captionSmall.copyWith(
+                                color: AppColors.textPrimary,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          event.dateRange,
-                          style: AppTextStyles.captionSmall.copyWith(
-                            color: AppColors.textSecondary,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.secondaryDark,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Text(
-                          event.category,
-                          style: AppTextStyles.captionSmall.copyWith(
-                            color: AppColors.textPrimary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 12, top: 12),
+          Positioned(
+            top: 12,
+            right: 12,
             child: Icon(
               Icons.favorite_border,
               color: AppColors.textSecondary,
