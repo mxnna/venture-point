@@ -110,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: GoogleFonts.poppins(
                             fontSize: 26,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.textPrimary,
+                            color: AppColors.primary,
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                           'Log in to continue your adventure.',
                           style: GoogleFonts.poppins(
                             fontSize: 15,
-                            color: AppColors.textSecondary,
+                            color: AppColors.primaryLight,
                             height: 1.5,
                           ),
                         ),

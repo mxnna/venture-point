@@ -143,7 +143,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             style: GoogleFonts.poppins(
                               fontSize: 26,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.textPrimary,
+                              color: AppColors.primary,
                             ),
                           ),
                           const SizedBox(height: 12),
@@ -151,7 +151,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             'Enter your email address and we\'ll send you a link to reset your password.',
                             style: GoogleFonts.poppins(
                               fontSize: 15,
-                              color: AppColors.textSecondary,
+                              color: AppColors.primaryLight,
                               height: 1.5,
                             ),
                           ),

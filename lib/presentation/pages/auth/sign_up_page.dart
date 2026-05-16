@@ -173,6 +173,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: GoogleFonts.poppins(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
+                            color: AppColors.primary,
                           ),
                           textAlign: TextAlign.left,
                         ),
@@ -182,7 +183,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           textAlign: TextAlign.left,
                           style: GoogleFonts.poppins(
                             fontSize: 14,
-                            color: AppColors.textSecondary,
+                            color: AppColors.primaryLight,
                           ),
                         ),
                         const SizedBox(height: 26),
