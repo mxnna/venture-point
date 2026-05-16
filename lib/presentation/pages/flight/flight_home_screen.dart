@@ -6,7 +6,9 @@ import '../widgets/common_widgets.dart';
 import 'flight_results_screen.dart';
 
 class flight_home_screen extends StatefulWidget {
+  static const routeName = '/flights';
   const flight_home_screen({super.key});
+  
 
   @override
   State<flight_home_screen> createState() => _FlightHomeScreenState();
