@@ -1,4 +1,3 @@
-import 'package:myapp/models/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/flight_model.dart';
@@ -212,7 +211,7 @@ class _FlightResultsScreenState extends State<flight_results_screen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                 const Icon(
+                                const Icon(
                                   Icons.airplanemode_off,
                                   size: 48,
                                   color: AppColors.beige3,
