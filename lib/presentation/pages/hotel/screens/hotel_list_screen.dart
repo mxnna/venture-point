@@ -44,7 +44,7 @@ class _HotelListScreenState extends State<HotelListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F6F2),
+      backgroundColor: const Color(0xFFFCFCFD),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -295,7 +295,8 @@ class _HotelCardState extends State<_HotelCard> {
   Timer? _autoScrollTimer;
 
   bool get _hasLoopingImages => widget.hotel.images.length > 1;
-  int get _virtualPageCount => _hasLoopingImages ? widget.hotel.images.length + 2 : 1;
+  int get _virtualPageCount =>
+      _hasLoopingImages ? widget.hotel.images.length + 2 : 1;
   int get _initialVirtualPage => _hasLoopingImages ? 1 : 0;
 
   int _mapVirtualIndex(int index) {
@@ -379,7 +380,11 @@ class _HotelCardState extends State<_HotelCard> {
       return trimmed;
     }
     if (trimmed.startsWith('assets/')) {
-      if (trimmed.startsWith('assets/images/') && RegExp(r'hotel\d+_\d+\.(jpe?g|png)$', caseSensitive: false).hasMatch(trimmed)) {
+      if (trimmed.startsWith('assets/images/') &&
+          RegExp(
+            r'hotel\d+_\d+\.(jpe?g|png)$',
+            caseSensitive: false,
+          ).hasMatch(trimmed)) {
         return 'lib/presentation/pages/hotel/assets/${trimmed.substring('assets/'.length)}';
       }
       return trimmed;
@@ -406,7 +411,9 @@ class _HotelCardState extends State<_HotelCard> {
       );
     }
 
-    final isNetwork = resolvedImage.startsWith('http://') || resolvedImage.startsWith('https://');
+    final isNetwork =
+        resolvedImage.startsWith('http://') ||
+        resolvedImage.startsWith('https://');
     if (isNetwork) {
       return CachedNetworkImage(
         imageUrl: resolvedImage,
@@ -471,7 +478,9 @@ class _HotelCardState extends State<_HotelCard> {
                     onPageChanged: _onPageChanged,
                     itemCount: _virtualPageCount,
                     itemBuilder: (context, index) {
-                      final img = hotel.images.isNotEmpty ? hotel.images[_mapVirtualIndex(index)] : '';
+                      final img = hotel.images.isNotEmpty
+                          ? hotel.images[_mapVirtualIndex(index)]
+                          : '';
                       return _buildHotelImage(img, height: 220);
                     },
                   ),
@@ -479,14 +488,20 @@ class _HotelCardState extends State<_HotelCard> {
                     top: 8,
                     left: 8,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.92),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
                         hotel.badge,
-                        style: const TextStyle(fontSize: 9, fontWeight: FontWeight.w500),
+                        style: const TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
@@ -500,7 +515,11 @@ class _HotelCardState extends State<_HotelCard> {
                         color: Colors.white.withOpacity(0.9),
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(Icons.favorite_border, size: 14, color: Colors.grey),
+                      child: const Icon(
+                        Icons.favorite_border,
+                        size: 14,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -513,7 +532,10 @@ class _HotelCardState extends State<_HotelCard> {
                         gradient: LinearGradient(
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
-                          colors: [Colors.black.withOpacity(0.75), Colors.transparent],
+                          colors: [
+                            Colors.black.withOpacity(0.75),
+                            Colors.transparent,
+                          ],
                         ),
                       ),
                       child: Row(
@@ -554,7 +576,10 @@ class _HotelCardState extends State<_HotelCard> {
                           ),
                           Container(
                             margin: const EdgeInsets.only(left: 8),
-                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 8,
+                            ),
                             decoration: BoxDecoration(
                               color: const Color(0xFF0A3D5C),
                               borderRadius: BorderRadius.circular(24),

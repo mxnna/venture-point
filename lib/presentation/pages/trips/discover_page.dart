@@ -300,13 +300,20 @@ class _DiscoverPageState extends State<DiscoverPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(country.name, style: AppTextStyles.headingSmall),
+                  Text(
+                    country.name,
+                    style: AppTextStyles.headingSmall,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   const SizedBox(height: 4),
                   Text(
                     '${country.cityCount} cities',
                     style: AppTextStyles.bodySmall.copyWith(
                       color: AppColors.textSecondary,
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),

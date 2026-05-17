@@ -12,7 +12,7 @@ const Color kBeige100 = Color(0xFFD3D1C7);
 const Color kBeige200 = Color(0xFFB4B2A9);
 const Color kBeige400 = Color(0xFF888780);
 const Color kBeige600 = Color(0xFF5F5E5A);
-const Color kBg = Color(0xFFFAF8F4);
+const Color kBg = Color(0xFFFCFCFD);
 
 class BookingDetailsScreen extends StatefulWidget {
   const BookingDetailsScreen({super.key});
