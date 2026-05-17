@@ -119,7 +119,7 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
             surface: kBg,
             onSurface: kNavy900,
           ),
-          dialogBackgroundColor: kBg,
+          dialogTheme: DialogThemeData(backgroundColor: kBg),
         ),
         child: child!,
       ),

@@ -103,7 +103,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  const Icon(Icons.star, color: AppColors.primary, size: 18),
+                  const Icon(Icons.star, color: AppColors.warning, size: 18),
                   const SizedBox(width: 4),
                   Text(
                     widget.city.rating.toStringAsFixed(1),
@@ -311,31 +311,32 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
       'icon': Icons.train,
       'label': 'Metro',
       'subtitle': 'Fast & affordable',
-      'price': 'EGP 6 – 20',
+      'price': 'EGP 10 – 20',
     },
     {
       'icon': Icons.car_rental,
       'label': 'Uber / Careem',
       'subtitle': 'Convenient & safe',
-      'price': 'From EGP 40',
+      'price': '40+ EGP',
     },
     {
       'icon': Icons.local_taxi,
       'label': 'Taxi',
       'subtitle': 'Metered & app-based',
-      'price': 'EGP 50+',
+      'price': '50+ EGP',
     },
     {
       'icon': Icons.directions_bus,
       'label': 'Bus',
       'subtitle': 'Very budget friendly',
-      'price': 'EGP 5 – 10',
+      'price': 'EGP 10 – 20',
     },
     {
       'icon': Icons.sailing,
       'label': 'Nile Ferry',
-      'subtitle': 'Scenic way across the Nile',
-      'price': 'EGP 5 – 15',
+      'subtitle':
+          'Scenic way across the Nile. Crossing only, no sightseeing tours.',
+      'price': 'EGP 10 – 30',
     },
     {
       'icon': Icons.directions_walk,
@@ -368,7 +369,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: _mustTryDishes.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 16),
+            separatorBuilder: (_, _) => const SizedBox(width: 16),
             itemBuilder: (context, index) {
               return _buildDishCard(_mustTryDishes[index]);
             },
@@ -394,7 +395,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: _diningAtmosphere.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 16),
+            separatorBuilder: (_, _) => const SizedBox(width: 16),
             itemBuilder: (context, index) {
               return _buildDiningAtmosphereCard(_diningAtmosphere[index]);
             },
@@ -752,7 +753,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
           {
             'title': 'Ramen',
             'image':
-                'https://images.unsplash.com/photo-1516685018646-549d2f91f0a9?q=80&w=1470&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1720873913894-43141d6f4359?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           },
           {
             'title': 'Matcha Desserts',
@@ -1383,7 +1384,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
             scrollDirection: Axis.horizontal,
             itemCount: _glanceHighlights.length,
             padding: const EdgeInsets.only(right: 6),
-            separatorBuilder: (_, __) => const SizedBox(width: 16),
+            separatorBuilder: (_, _) => const SizedBox(width: 16),
             itemBuilder: (context, index) {
               return _buildGlanceCard(_glanceHighlights[index]);
             },

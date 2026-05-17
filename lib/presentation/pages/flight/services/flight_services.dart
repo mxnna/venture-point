@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/flight_model.dart';
 import '../models/booking_model.dart';
-import '../models/search_state.dart';
 
 class FlightService {
   final _db = FirebaseFirestore.instance;
@@ -24,7 +23,8 @@ class FlightService {
           .where('date', isEqualTo: date);
 
       if (directOnly) query = query.where('stops', isEqualTo: 0);
-      if (baggageIncluded) query = query.where('baggageIncluded', isEqualTo: true);
+      if (baggageIncluded)
+        query = query.where('baggageIncluded', isEqualTo: true);
       if (refundableOnly) query = query.where('refundable', isEqualTo: true);
 
       final snap = await query.get();
@@ -100,7 +100,10 @@ class FlightService {
         .where('userId', isEqualTo: userId)
         .orderBy('createdAt', descending: true)
         .snapshots()
-        .map((snap) => snap.docs.map((d) => BookingModel.fromFirestore(d)).toList());
+        .map(
+          (snap) =>
+              snap.docs.map((d) => BookingModel.fromFirestore(d)).toList(),
+        );
   }
 
   // ─── Seed demo data to Firestore ─────────────────────────────────────────
@@ -198,15 +201,37 @@ class FlightService {
   ];
 
   Map<String, String> _defaultSeatMap() => {
-    '1A': 'taken',  '1B': 'available', '1C': 'available', '1D': 'taken',
-    '2A': 'available', '2B': 'taken', '2C': 'taken', '2D': 'available',
-    '10A': 'available', '10B': 'taken', '10C': 'taken',
-    '10D': 'available', '10E': 'available', '10F': 'taken',
-    '11A': 'taken', '11B': 'available', '11C': 'taken',
-    '11D': 'taken', '11E': 'available', '11F': 'taken',
-    '12A': 'available', '12B': 'available', '12C': 'taken',
-    '12D': 'available', '12E': 'taken', '12F': 'available',
-    '23A': 'available', '23B': 'taken', '23C': 'available',
-    '23D': 'taken', '23E': 'available', '23F': 'taken',
+    '1A': 'taken',
+    '1B': 'available',
+    '1C': 'available',
+    '1D': 'taken',
+    '2A': 'available',
+    '2B': 'taken',
+    '2C': 'taken',
+    '2D': 'available',
+    '10A': 'available',
+    '10B': 'taken',
+    '10C': 'taken',
+    '10D': 'available',
+    '10E': 'available',
+    '10F': 'taken',
+    '11A': 'taken',
+    '11B': 'available',
+    '11C': 'taken',
+    '11D': 'taken',
+    '11E': 'available',
+    '11F': 'taken',
+    '12A': 'available',
+    '12B': 'available',
+    '12C': 'taken',
+    '12D': 'available',
+    '12E': 'taken',
+    '12F': 'available',
+    '23A': 'available',
+    '23B': 'taken',
+    '23C': 'available',
+    '23D': 'taken',
+    '23E': 'available',
+    '23F': 'taken',
   };
 }

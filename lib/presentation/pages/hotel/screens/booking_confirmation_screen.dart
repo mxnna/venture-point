@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/hotel.dart';
-import 'dart:math';
 
 // ── Colors (نفس الـ BookingDetailsScreen) ────────────────────
 const Color kNavy900 = Color(0xFF042C53);

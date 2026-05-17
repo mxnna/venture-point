@@ -136,7 +136,7 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
                       children: [
                         const Icon(
                           Icons.star,
-                          color: AppColors.primary,
+                          color: AppColors.warning,
                           size: 14,
                         ),
                         const SizedBox(width: 4),
@@ -457,7 +457,7 @@ class _CountryDetailsPageState extends State<CountryDetailsPage> {
               if (!isLast) const SizedBox(height: 12),
             ],
           );
-        }).toList(),
+        }),
       ],
     );
   }

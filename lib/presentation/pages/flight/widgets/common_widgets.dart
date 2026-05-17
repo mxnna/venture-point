@@ -9,8 +9,13 @@ class NavyButton extends StatelessWidget {
   final double height;
   final Widget? icon;
 
-  const NavyButton({super.key, required this.label, required this.onTap,
-    this.height = 48, this.icon});
+  const NavyButton({
+    super.key,
+    required this.label,
+    required this.onTap,
+    this.height = 48,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +27,33 @@ class NavyButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.navy,
           foregroundColor: AppColors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           elevation: 0,
         ),
         child: icon != null
-            ? Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [icon!, const SizedBox(width: 8),
-                  Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500))])
-            : Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  icon!,
+                  const SizedBox(width: 8),
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              )
+            : Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
       ),
     );
   }
@@ -41,8 +65,12 @@ class FieldBox extends StatelessWidget {
   final VoidCallback? onTap;
   final EdgeInsets padding;
 
-  const FieldBox({super.key, required this.child, this.onTap,
-    this.padding = const EdgeInsets.symmetric(horizontal: 12, vertical: 10)});
+  const FieldBox({
+    super.key,
+    required this.child,
+    this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +101,14 @@ class CodeBadge extends StatelessWidget {
         color: AppColors.lightBlue,
         borderRadius: BorderRadius.circular(6),
       ),
-      child: Text(code,
-          style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: AppColors.navy)),
+      child: Text(
+        code,
+        style: TextStyle(
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
+          color: AppColors.navy,
+        ),
+      ),
     );
   }
 }
@@ -85,8 +119,12 @@ class FilterChip2 extends StatelessWidget {
   final bool active;
   final VoidCallback onTap;
 
-  const FilterChip2({super.key, required this.label,
-    required this.active, required this.onTap});
+  const FilterChip2({
+    super.key,
+    required this.label,
+    required this.active,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -98,11 +136,16 @@ class FilterChip2 extends StatelessWidget {
         decoration: BoxDecoration(
           color: active ? AppColors.lightBlue : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: active ? AppColors.blue.withOpacity(.5) : AppColors.beige3),
+          border: Border.all(
+            color: active ? AppColors.blue.withOpacity(.5) : AppColors.beige3,
+          ),
         ),
         child: Text(
           active ? '✓  $label' : label,
-          style: TextStyle(fontSize: 11, color: active ? AppColors.navy : AppColors.textMuted),
+          style: TextStyle(
+            fontSize: 11,
+            color: active ? AppColors.navy : AppColors.textMuted,
+          ),
         ),
       ),
     );
@@ -117,47 +160,116 @@ class RouteLine extends StatelessWidget {
   final bool isDirect;
   final double fontSize;
 
-  const RouteLine({super.key,
-    required this.fromCode, required this.toCode,
-    required this.duration, required this.isDirect, this.fontSize = 16});
+  const RouteLine({
+    super.key,
+    required this.fromCode,
+    required this.toCode,
+    required this.duration,
+    required this.isDirect,
+    this.fontSize = 16,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Column(children: [
-        Text(fromCode, style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w600, color: AppColors.textDark)),
-      ]),
-      Expanded(child: Column(children: [
-        Text(duration, style: TextStyle(fontSize: 9, color: AppColors.textMuted)),
-        const SizedBox(height: 4),
-        Row(children: [
-          Container(width: 5, height: 5, decoration: BoxDecoration(color: AppColors.beige3, shape: BoxShape.circle)),
-          Expanded(child: Container(height: 1,
-            decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: AppColors.beige3, width: 1, style: BorderStyle.solid)),
+    return Row(
+      children: [
+        Column(
+          children: [
+            Text(
+              fromCode,
+              style: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.w600,
+                color: AppColors.textDark,
+              ),
             ),
-          )),
-          Icon(Icons.flight, size: 14, color: AppColors.blue),
-          Expanded(child: Container(height: 1,
-            decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: AppColors.beige3, width: 1, style: BorderStyle.solid)),
-            ),
-          )),
-          Container(width: 5, height: 5, decoration: BoxDecoration(color: AppColors.beige3, shape: BoxShape.circle)),
-        ]),
-        const SizedBox(height: 3),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 1),
-          decoration: BoxDecoration(
-            color: isDirect ? AppColors.greenBg : AppColors.amberBg,
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Text(isDirect ? 'Direct' : '1 stop',
-              style: TextStyle(fontSize: 8, color: isDirect ? AppColors.green : AppColors.amber)),
+          ],
         ),
-      ])),
-      Text(toCode, style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w600, color: AppColors.textDark)),
-    ]);
+        Expanded(
+          child: Column(
+            children: [
+              Text(
+                duration,
+                style: TextStyle(fontSize: 9, color: AppColors.textMuted),
+              ),
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  Container(
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: AppColors.beige3,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: AppColors.beige3,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Icon(Icons.flight, size: 14, color: AppColors.blue),
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: AppColors.beige3,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: AppColors.beige3,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 3),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 1),
+                decoration: BoxDecoration(
+                  color: isDirect ? AppColors.greenBg : AppColors.amberBg,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  isDirect ? 'Direct' : '1 stop',
+                  style: TextStyle(
+                    fontSize: 8,
+                    color: isDirect ? AppColors.green : AppColors.amber,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Text(
+          toCode,
+          style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textDark,
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -176,12 +288,24 @@ class AirlineBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final col = _colors[code] ?? [const Color(0xFFEBF2FC), const Color(0xFF1B3A6B)];
+    final col =
+        _colors[code] ?? [const Color(0xFFEBF2FC), const Color(0xFF1B3A6B)];
     return Container(
-      width: size, height: size,
-      decoration: BoxDecoration(color: col[0], borderRadius: BorderRadius.circular(size * 0.25)),
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: col[0],
+        borderRadius: BorderRadius.circular(size * 0.25),
+      ),
       alignment: Alignment.center,
-      child: Text(code, style: TextStyle(fontSize: size * 0.3, fontWeight: FontWeight.w600, color: col[1])),
+      child: Text(
+        code,
+        style: TextStyle(
+          fontSize: size * 0.3,
+          fontWeight: FontWeight.w600,
+          color: col[1],
+        ),
+      ),
     );
   }
 }
@@ -192,16 +316,36 @@ class SectionHeader extends StatelessWidget {
   final String? action;
   final VoidCallback? onAction;
 
-  const SectionHeader({super.key, required this.title, this.action, this.onAction});
+  const SectionHeader({
+    super.key,
+    required this.title,
+    this.action,
+    this.onAction,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Text(title, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.textDark)),
-      if (action != null)
-        GestureDetector(onTap: onAction,
-            child: Text(action!, style: TextStyle(fontSize: 11, color: AppColors.blue))),
-    ]);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textDark,
+          ),
+        ),
+        if (action != null)
+          GestureDetector(
+            onTap: onAction,
+            child: Text(
+              action!,
+              style: TextStyle(fontSize: 11, color: AppColors.blue),
+            ),
+          ),
+      ],
+    );
   }
 }
 
@@ -212,8 +356,13 @@ class NavyHeader extends StatelessWidget {
   final Widget? trailing;
   final List<Widget>? extra;
 
-  const NavyHeader({super.key, required this.title,
-    required this.onBack, this.trailing, this.extra});
+  const NavyHeader({
+    super.key,
+    required this.title,
+    required this.onBack,
+    this.trailing,
+    this.extra,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -221,25 +370,48 @@ class NavyHeader extends StatelessWidget {
       color: AppColors.navy,
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top + 12,
-        left: 16, right: 16, bottom: extra != null ? 44 : 16,
+        left: 16,
+        right: 16,
+        bottom: extra != null ? 44 : 16,
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [
-          GestureDetector(
-            onTap: onBack,
-            child: Container(
-              width: 32, height: 32,
-              decoration: BoxDecoration(color: AppColors.navyLight, shape: BoxShape.circle),
-              child: Icon(Icons.arrow_back_ios_new, color: AppColors.white, size: 14),
-            ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              GestureDetector(
+                onTap: onBack,
+                child: Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: AppColors.navyLight,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.arrow_back_ios_new,
+                    color: AppColors.white,
+                    size: 14,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.white,
+                  ),
+                ),
+              ),
+              ?trailing,
+            ],
           ),
-          const SizedBox(width: 10),
-          Expanded(child: Text(title,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: AppColors.white))),
-          if (trailing != null) trailing!,
-        ]),
-        if (extra != null) ...extra!,
-      ]),
+          if (extra != null) ...extra!,
+        ],
+      ),
     );
   }
 }
@@ -250,24 +422,48 @@ class InfoBox extends StatelessWidget {
   final String value;
   final IconData icon;
 
-  const InfoBox({super.key, required this.label, required this.value, required this.icon});
+  const InfoBox({
+    super.key,
+    required this.label,
+    required this.value,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(color: AppColors.beige, borderRadius: BorderRadius.circular(10)),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(label, style: TextStyle(fontSize: 9, color: AppColors.textMuted)),
-        const SizedBox(height: 3),
-        Row(children: [
-          Icon(icon, size: 13, color: AppColors.blue),
-          const SizedBox(width: 4),
-          Expanded(child: Text(value,
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, color: AppColors.textDark),
-              overflow: TextOverflow.ellipsis)),
-        ]),
-      ]),
+      decoration: BoxDecoration(
+        color: AppColors.beige,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: TextStyle(fontSize: 9, color: AppColors.textMuted),
+          ),
+          const SizedBox(height: 3),
+          Row(
+            children: [
+              Icon(icon, size: 13, color: AppColors.blue),
+              const SizedBox(width: 4),
+              Expanded(
+                child: Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textDark,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

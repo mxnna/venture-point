@@ -1,8 +1,9 @@
+import 'dart:async';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/hotel.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'booking_detail_screen.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class HotelDetailScreen extends StatefulWidget {
   final Hotel hotel;
@@ -19,17 +20,181 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   int _nights = 1;
   DateTime _checkIn = DateTime(2025, 6, 10);
 
+  late final PageController _detailPageController;
+  int _detailCurrentVirtualPage = 1;
+  Timer? _detailAutoScrollTimer;
+
+  bool get _hasLoopingImages => widget.hotel.images.length > 1;
+  int get _detailVirtualPageCount => _hasLoopingImages ? widget.hotel.images.length + 2 : 1;
+  int get _detailInitialVirtualPage => _hasLoopingImages ? 1 : 0;
+
+  int _mapDetailVirtualIndex(int index) {
+    if (!_hasLoopingImages) return 0;
+    if (index == 0) {
+      return widget.hotel.images.length - 1;
+    }
+    if (index == widget.hotel.images.length + 1) {
+      return 0;
+    }
+    return index - 1;
+  }
+
   final List<int> _nightOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   DateTime get _checkOut => _checkIn.add(Duration(days: _nights));
   int get _totalPrice => widget.hotel.pricePerNight * _nights * _rooms;
 
-  Future<void> _openMap() async {
-    final query = Uri.encodeComponent('${widget.hotel.name}, ${widget.hotel.location}',);
-    final url = Uri.parse(
-      'https://www.google.com/maps/search/?api=1&query=$query',
+  @override
+  void initState() {
+    super.initState();
+    _detailPageController = PageController(initialPage: _detailInitialVirtualPage);
+    _detailCurrentVirtualPage = _detailInitialVirtualPage;
+    _startDetailAutoScroll();
+  }
+
+  @override
+  void dispose() {
+    _detailAutoScrollTimer?.cancel();
+    _detailPageController.dispose();
+    super.dispose();
+  }
+
+  void _onDetailPageChanged(int page) {
+    if (!_hasLoopingImages) return;
+    setState(() {
+      _detailCurrentVirtualPage = page;
+    });
+
+    if (page == 0) {
+      Future.microtask(() {
+        if (!_detailPageController.hasClients) return;
+        _detailPageController.jumpToPage(widget.hotel.images.length);
+      });
+      return;
+    }
+
+    if (page == widget.hotel.images.length + 1) {
+      Future.microtask(() {
+        if (!_detailPageController.hasClients) return;
+        _detailPageController.jumpToPage(1);
+      });
+    }
+  }
+
+  void _startDetailAutoScroll() {
+    _detailAutoScrollTimer?.cancel();
+    if (!_hasLoopingImages) return;
+    _detailAutoScrollTimer = Timer.periodic(const Duration(seconds: 2), (_) {
+      if (!_detailPageController.hasClients) return;
+      final nextPage = _detailCurrentVirtualPage + 1;
+      _detailPageController.animateToPage(
+        nextPage,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  String _resolveHotelImagePath(String img) {
+    var trimmed = img.trim().replaceAll('\\', '/');
+    trimmed = trimmed.replaceAll(RegExp(r'^/+'), '');
+    if (trimmed.isEmpty) return '';
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+      return trimmed;
+    }
+    if (trimmed.startsWith('assets/')) {
+      if (trimmed.startsWith('assets/images/') && RegExp(r'hotel\d+_\d+\.(jpe?g|png)$', caseSensitive: false).hasMatch(trimmed)) {
+        return 'lib/presentation/pages/hotel/assets/${trimmed.substring('assets/'.length)}';
+      }
+      return trimmed;
+    }
+    if (trimmed.startsWith('lib/')) {
+      return trimmed;
+    }
+    if (trimmed.startsWith('images/')) {
+      return 'lib/presentation/pages/hotel/assets/$trimmed';
+    }
+    return 'lib/presentation/pages/hotel/assets/images/$trimmed';
+  }
+
+  Widget _buildHotelImage(String img, {double? height}) {
+    final resolvedImage = _resolveHotelImagePath(img);
+    if (resolvedImage.isEmpty) {
+      return Container(
+        height: height ?? 220,
+        width: double.infinity,
+        color: const Color(0xFF1A6B8A),
+      );
+    }
+
+    final isNetwork = resolvedImage.startsWith('http://') || resolvedImage.startsWith('https://');
+    if (isNetwork) {
+      return CachedNetworkImage(
+        imageUrl: resolvedImage,
+        height: height ?? 220,
+        width: double.infinity,
+        fit: BoxFit.cover,
+        placeholder: (_, __) => Container(
+          height: height ?? 220,
+          width: double.infinity,
+          color: const Color(0xFFEEEDED),
+          child: const Center(
+            child: CircularProgressIndicator(color: Color(0xFF0A3D5C)),
+          ),
+        ),
+        errorWidget: (_, __, ___) => Container(
+          height: height ?? 220,
+          width: double.infinity,
+          color: const Color(0xFF1A6B8A),
+          child: const Center(
+            child: Icon(Icons.broken_image, color: Colors.white70, size: 32),
+          ),
+        ),
+      );
+    }
+    return Image.asset(
+      resolvedImage,
+      height: height ?? 220,
+      width: double.infinity,
+      fit: BoxFit.cover,
+      errorBuilder: (_, __, ___) => Container(
+        height: height ?? 220,
+        width: double.infinity,
+        color: const Color(0xFF1A6B8A),
+      ),
     );
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
+  }
+
+  Future<void> _openMap() async {
+    final query = '${widget.hotel.name}${widget.hotel.location.isNotEmpty ? ', ${widget.hotel.location}' : ''}'.trim();
+    if (query.isEmpty) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No location available to open in Maps.')),
+      );
+      return;
+    }
+
+    final googleUrl = Uri.parse('https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(query)}');
+    final appleUrl = Uri.parse('https://maps.apple.com/?q=${Uri.encodeComponent(query)}');
+    final geoUrl = Uri.parse('geo:0,0?q=${Uri.encodeComponent(query)}');
+
+    bool opened = false;
+    try {
+      opened = await launchUrl(googleUrl, mode: LaunchMode.externalApplication);
+      if (!opened) {
+        opened = await launchUrl(geoUrl, mode: LaunchMode.externalApplication);
+      }
+      if (!opened) {
+        opened = await launchUrl(appleUrl, mode: LaunchMode.externalApplication);
+      }
+    } catch (_) {
+      opened = false;
+    }
+
+    if (!opened && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Unable to open map link.')),
+      );
     }
   }
 
@@ -111,24 +276,17 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         children: [
           Stack(
             children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 280,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  viewportFraction: 1.0,
-                  enableInfiniteScroll: true,
+              SizedBox(
+                height: 280,
+                child: PageView.builder(
+                  controller: _detailPageController,
+                  onPageChanged: _onDetailPageChanged,
+                  itemCount: _detailVirtualPageCount,
+                  itemBuilder: (context, index) {
+                    final img = widget.hotel.images.isNotEmpty ? widget.hotel.images[_mapDetailVirtualIndex(index)] : '';
+                    return _buildHotelImage(img, height: 280);
+                  },
                 ),
-                items: widget.hotel.images.map((img) {
-                  return Image.asset(
-                    img,
-                    height: 280,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) =>
-                        Container(height: 280, color: bgColor),
-                  );
-                }).toList(),
               ),
 
               // :Container(height: 280, color: bgcolor),
@@ -463,9 +621,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => BookingDetailsScreen(
-                                
-                              ),
+                              builder: (_) => BookingDetailsScreen(),
                             ),
                           ),
                           child: Container(

@@ -92,7 +92,7 @@ class _CityDetailsPageState extends State<CityDetailsPage> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  const Icon(Icons.star, color: AppColors.primary, size: 18),
+                  const Icon(Icons.star, color: AppColors.warning, size: 18),
                   const SizedBox(width: 4),
                   Text(
                     widget.city.rating.toStringAsFixed(1),

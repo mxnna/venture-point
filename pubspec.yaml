@@ -47,6 +47,7 @@ dependencies:
   google_fonts: 8.0.2
   google_sign_in: ^6.1.6
   image_picker: ^0.8.7+5
+  url_launcher: ^6.1.10
   build_runner: ^2.13.1
 
 dev_dependencies:
@@ -73,6 +74,7 @@ flutter:
 
   assets:
     - assets/images/
+    - lib/presentation/pages/hotel/assets/images/
 
   fonts:
     - family: TT Milks Casual Pie Base

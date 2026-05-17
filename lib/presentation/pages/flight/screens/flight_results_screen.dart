@@ -50,15 +50,18 @@ class _FlightResultsScreenState extends State<flight_results_screen> {
 
   void _applyFilter() {
     var list = List<FlightModel>.from(_allFlights);
-    if (_activeFilter == 'direct')
+    if (_activeFilter == 'direct') {
       list = list.where((f) => f.stops == 0).toList();
+    }
     if (_activeFilter == 'stop') list = list.where((f) => f.stops > 0).toList();
-    if (_activeFilter == 'bag')
+    if (_activeFilter == 'bag') {
       list = list.where((f) => f.baggageIncluded).toList();
+    }
     if (_activeFilter == 'ref') list = list.where((f) => f.refundable).toList();
     if (_sortBy == 'cheap') list.sort((a, b) => a.price.compareTo(b.price));
-    if (_sortBy == 'fast')
+    if (_sortBy == 'fast') {
       list.sort((a, b) => a.durationMinutes.compareTo(b.durationMinutes));
+    }
     setState(() => _filtered = list);
   }
 
@@ -232,7 +235,7 @@ class _FlightResultsScreenState extends State<flight_results_screen> {
                             child: ListView.separated(
                               padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
                               itemCount: _filtered.length,
-                              separatorBuilder: (_, __) =>
+                              separatorBuilder: (_, _) =>
                                   const SizedBox(height: 10),
                               itemBuilder: (_, i) => _FlightCard(
                                 flight: _filtered[i],

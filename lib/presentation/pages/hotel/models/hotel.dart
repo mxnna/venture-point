@@ -24,6 +24,35 @@ class Hotel {
   });
 
   factory Hotel.fromFirestore(Map<String, dynamic> data, String id) {
+    final rawImages = data['images'];
+    final images = <String>[];
+    if (rawImages is List) {
+      for (final item in rawImages) {
+        if (item is String && item.isNotEmpty) {
+          images.add(item);
+        } else if (item is Map<String, dynamic>) {
+          final url = item['url'] ?? item['src'] ?? item['path'] ?? item['image'];
+          if (url is String && url.isNotEmpty) {
+            images.add(url);
+          }
+        } else if (item != null) {
+          final value = item.toString();
+          if (value.isNotEmpty) {
+            images.add(value);
+          }
+        }
+      }
+    } else if (rawImages is String && rawImages.isNotEmpty) {
+      images.addAll(rawImages
+          .split(',')
+          .map((part) => part.trim())
+          .where((part) => part.isNotEmpty));
+    }
+
+    if (images.isEmpty && data['image'] is String && data['image'].toString().isNotEmpty) {
+      images.add(data['image'].toString());
+    }
+
     return Hotel(
       id: id,
       name: data['name'] ?? '',
@@ -34,7 +63,7 @@ class Hotel {
       stars: data['stars'] ?? 0,
       badge: data['badge'] ?? '',
       category: data['category'] ?? 'all',
-      images: List<String>.from (data['images'] ?? []),
+      images: images,
     );
   }
 
