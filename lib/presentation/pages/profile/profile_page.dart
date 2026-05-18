@@ -803,10 +803,24 @@ class _ProfilePageState extends State<ProfilePage> {
               child: CachedNetworkImage(
                 imageUrl: city.imageUrl,
                 fit: BoxFit.cover,
-                placeholder: (context, url) =>
-                    Container(color: AppColors.secondaryDark),
-                errorWidget: (context, url, error) =>
-                    Container(color: AppColors.secondaryDark),
+                width: double.infinity,
+                height: 120,
+                placeholder: (context, url) => Container(
+                  color: AppColors.secondaryDark,
+                  child: const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                ),
+                errorWidget: (context, url, error) => Container(
+                  color: AppColors.secondaryDark,
+                  child: const Center(
+                    child: Icon(
+                      Icons.broken_image,
+                      color: AppColors.white,
+                      size: 28,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),

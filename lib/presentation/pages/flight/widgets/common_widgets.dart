@@ -137,7 +137,9 @@ class FilterChip2 extends StatelessWidget {
           color: active ? AppColors.lightBlue : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: active ? AppColors.blue.withOpacity(.5) : AppColors.beige3,
+            color: active
+                ? AppColors.blue.withValues(alpha: 0.5)
+                : AppColors.beige3,
           ),
         ),
         child: Text(
@@ -406,7 +408,8 @@ class NavyHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              ?trailing,
+              // ignore: use_null_aware_elements
+              if (trailing != null) trailing!,
             ],
           ),
           if (extra != null) ...extra!,

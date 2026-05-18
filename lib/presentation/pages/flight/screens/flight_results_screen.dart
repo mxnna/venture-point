@@ -7,15 +7,15 @@ import '../utils/app_theme.dart';
 import '../widgets/common_widgets.dart';
 import 'flight_details_screen.dart';
 
-class flight_results_screen extends StatefulWidget {
+class FlightResultsScreen extends StatefulWidget {
   final SearchState search;
-  const flight_results_screen({super.key, required this.search});
+  const FlightResultsScreen({super.key, required this.search});
 
   @override
-  State<flight_results_screen> createState() => _FlightResultsScreenState();
+  State<FlightResultsScreen> createState() => _FlightResultsScreenState();
 }
 
-class _FlightResultsScreenState extends State<flight_results_screen> {
+class _FlightResultsScreenState extends State<FlightResultsScreen> {
   final _service = FlightService();
   List<FlightModel> _allFlights = [];
   List<FlightModel> _filtered = [];
@@ -117,7 +117,7 @@ class _FlightResultsScreenState extends State<flight_results_screen> {
                     child: Text(
                       '——✈——',
                       style: TextStyle(
-                        color: Colors.white.withOpacity(.3),
+                        color: Colors.white.withValues(alpha: .3),
                         fontSize: 13,
                       ),
                     ),
@@ -282,221 +282,230 @@ class _FlightCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: isHighlighted ? AppColors.lightBlue : AppColors.beige,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: isHighlighted
-                ? AppColors.blue.withOpacity(.4)
-                : Colors.transparent,
-            width: 1.5,
-          ),
-        ),
-        child: Column(
-          children: [
-            // Top row: airline + price
-            Row(
-              children: [
-                AirlineBadge(flight.airlineCode),
-                const SizedBox(width: 8),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      flight.airline,
-                      style: const TextStyle(
-                        fontSize: 11,
-                        color: AppColors.textMuted,
-                      ),
-                    ),
-                    Text(
-                      flight.flightNumber,
-                      style: const TextStyle(
-                        fontSize: 10,
-                        color: AppColors.beige3,
-                      ),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      '\$${flight.price.toInt()}',
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.navy,
-                      ),
-                    ),
-                    const Text(
-                      'per person',
-                      style: TextStyle(fontSize: 9, color: AppColors.textMuted),
-                    ),
-                  ],
-                ),
-              ],
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(14),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: isHighlighted ? AppColors.lightBlue : AppColors.beige,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: isHighlighted
+                  ? AppColors.blue.withValues(alpha: .4)
+                  : Colors.transparent,
+              width: 1.5,
             ),
-            const SizedBox(height: 10),
-            // Route
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      flight.departTime,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textDark,
-                      ),
-                    ),
-                    Text(
-                      search.from.code,
-                      style: const TextStyle(
-                        fontSize: 10,
-                        color: AppColors.textMuted,
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: Column(
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Top row: airline + price
+              Row(
+                children: [
+                  AirlineBadge(flight.airlineCode),
+                  const SizedBox(width: 8),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        flight.duration,
+                        flight.airline,
                         style: const TextStyle(
-                          fontSize: 9,
+                          fontSize: 11,
                           color: AppColors.textMuted,
                         ),
                       ),
-                      const SizedBox(height: 3),
-                      Row(
-                        children: [
-                          Container(
-                            width: 5,
-                            height: 5,
-                            decoration: const BoxDecoration(
-                              color: AppColors.beige3,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              height: 1,
-                              color: AppColors.beige3,
-                            ),
-                          ),
-                          const Icon(
-                            Icons.flight,
-                            size: 13,
-                            color: AppColors.blue,
-                          ),
-                          Expanded(
-                            child: Container(
-                              height: 1,
-                              color: AppColors.beige3,
-                            ),
-                          ),
-                          Container(
-                            width: 5,
-                            height: 5,
-                            decoration: const BoxDecoration(
-                              color: AppColors.beige3,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 3),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: flight.stops == 0
-                              ? AppColors.greenBg
-                              : AppColors.amberBg,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          flight.stops == 0 ? 'Direct' : '${flight.stops} stop',
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: flight.stops == 0
-                                ? AppColors.green
-                                : AppColors.amber,
-                          ),
+                      Text(
+                        flight.flightNumber,
+                        style: const TextStyle(
+                          fontSize: 10,
+                          color: AppColors.beige3,
                         ),
                       ),
                     ],
                   ),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      flight.arrivalTime,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textDark,
+                  const Spacer(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        '\$${flight.price.toInt()}',
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.navy,
+                        ),
                       ),
-                    ),
-                    Text(
-                      search.to.code,
-                      style: const TextStyle(
-                        fontSize: 10,
-                        color: AppColors.textMuted,
+                      const Text(
+                        'per person',
+                        style: TextStyle(
+                          fontSize: 9,
+                          color: AppColors.textMuted,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            const Divider(height: 1, color: AppColors.beige3),
-            const SizedBox(height: 8),
-            // Tags + select button
-            Row(
-              children: [
-                if (flight.baggageIncluded)
-                  _tag(
-                    Icons.luggage_outlined,
-                    '${flight.availableSeats > 20 ? 23 : 20}kg',
+                    ],
                   ),
-                if (flight.refundable) _tag(Icons.sync_alt, 'Flex'),
-                const Spacer(),
-                GestureDetector(
-                  onTap: onTap,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 7,
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        flight.departTime,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textDark,
+                        ),
+                      ),
+                      Text(
+                        search.from.code,
+                        style: const TextStyle(
+                          fontSize: 10,
+                          color: AppColors.textMuted,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          flight.duration,
+                          style: const TextStyle(
+                            fontSize: 9,
+                            color: AppColors.textMuted,
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Row(
+                          children: [
+                            Container(
+                              width: 5,
+                              height: 5,
+                              decoration: const BoxDecoration(
+                                color: AppColors.beige3,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: AppColors.beige3,
+                              ),
+                            ),
+                            const Icon(
+                              Icons.flight,
+                              size: 13,
+                              color: AppColors.blue,
+                            ),
+                            Expanded(
+                              child: Container(
+                                height: 1,
+                                color: AppColors.beige3,
+                              ),
+                            ),
+                            Container(
+                              width: 5,
+                              height: 5,
+                              decoration: const BoxDecoration(
+                                color: AppColors.beige3,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 3),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: flight.stops == 0
+                                ? AppColors.greenBg
+                                : AppColors.amberBg,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Text(
+                            flight.stops == 0
+                                ? 'Direct'
+                                : '${flight.stops} stop',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: flight.stops == 0
+                                  ? AppColors.green
+                                  : AppColors.amber,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    decoration: BoxDecoration(
-                      color: AppColors.navy,
-                      borderRadius: BorderRadius.circular(9),
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        flight.arrivalTime,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textDark,
+                        ),
+                      ),
+                      Text(
+                        search.to.code,
+                        style: const TextStyle(
+                          fontSize: 10,
+                          color: AppColors.textMuted,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              const Divider(height: 1, color: AppColors.beige3),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  if (flight.baggageIncluded)
+                    _tag(
+                      Icons.luggage_outlined,
+                      '${flight.availableSeats > 20 ? 23 : 20}kg',
                     ),
-                    child: const Text(
-                      'Select ↗',
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
+                  if (flight.refundable) _tag(Icons.sync_alt, 'Flex'),
+                  const Spacer(),
+                  InkWell(
+                    onTap: onTap,
+                    borderRadius: BorderRadius.circular(9),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 7,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.navy,
+                        borderRadius: BorderRadius.circular(9),
+                      ),
+                      child: const Text(
+                        'Select ↗',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
